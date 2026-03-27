@@ -78,8 +78,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .rev-name{font-weight:600;font-size:13px}.rev-anon{font-size:10px;color:var(--tx3);margin-left:4px;font-style:italic}
 .rev-date{font-size:11px;color:var(--tx3)}.rev-stars{color:#d97706;font-size:12px;margin-bottom:5px}
 .rev-text{font-size:13px;color:var(--tx2);line-height:1.7}
-.rev-flag{background:none;border:none;color:var(--tx3);font-size:11px;cursor:pointer;margin-top:7px;font-family:var(--sans);padding:0;transition:color .15s}
-.rev-flag:hover{color:#dc2626}
 .form-block{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:22px;margin-top:24px}
 .form-block h3{font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:16px}
 .star-row{display:flex;gap:4px;margin-bottom:16px}
@@ -96,6 +94,10 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .btn-primary:hover{opacity:.82}
 .btn-ghost{padding:10px 18px;background:var(--bg);color:var(--tx);border:1px solid var(--bd2);border-radius:var(--r);font-size:13px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:background .15s}
 .btn-ghost:hover{background:var(--bg2)}
+.btn-danger{padding:8px 16px;background:#dc2626;color:#fff;border:none;border-radius:var(--r);font-size:12px;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .2s}
+.btn-danger:hover{opacity:.82}
+.btn-success{padding:8px 16px;background:#16a34a;color:#fff;border:none;border-radius:var(--r);font-size:12px;font-family:var(--sans);font-weight:600;cursor:pointer;transition:opacity .2s}
+.btn-success:hover{opacity:.82}
 .back-link{display:flex;align-items:center;gap:6px;color:var(--tx2);font-size:13px;cursor:pointer;margin-bottom:22px;background:none;border:none;font-family:var(--sans);padding:0;transition:color .15s}
 .back-link:hover{color:var(--tx)}
 .auth-layout{display:flex;flex-direction:column;align-items:center;padding:40px 20px;min-height:100vh;background:var(--bg2)}
@@ -127,9 +129,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .profile-school{font-size:13px;color:var(--tx2);margin-bottom:4px}.profile-niveau{font-size:12px;color:var(--tx3);margin-bottom:10px}
 .profile-badges{display:flex;gap:6px;flex-wrap:wrap}
 .p-badge{font-size:11px;padding:2px 9px;border-radius:4px;background:var(--bg3);border:1px solid var(--bd);color:var(--tx2);font-weight:600}
-.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
-.pstat{text-align:center;padding:14px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px}
-.pstat-n{font-family:var(--serif);font-size:24px;font-weight:900}.pstat-l{font-size:10px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:600}
 .section-title{font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--bd)}
 .rank-podium{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:22px}
 .podium-card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:background .15s}
@@ -145,6 +144,16 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .login-required{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:22px;margin-top:24px;text-align:center}
 .login-required p{color:var(--tx2);font-size:13px;margin-bottom:12px}
+.mod-card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;margin-bottom:12px;box-shadow:var(--shadow)}
+.mod-card.pending{border-left:4px solid #f59e0b}
+.mod-meta{font-size:11px;color:var(--tx3);margin-bottom:6px}
+.mod-text{font-size:13px;color:var(--tx);margin-bottom:8px;padding:10px;background:var(--bg);border-radius:var(--r);border:1px solid var(--bd)}
+.mod-stars{color:#d97706;font-size:12px;margin-bottom:6px}
+.mod-actions{display:flex;gap:8px;margin-top:10px}
+.mod-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;margin-left:6px}
+.mod-badge.warn{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+.mod-badge.danger{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.mod-count{display:inline-flex;align-items:center;justify-content:center;background:#dc2626;color:#fff;font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;margin-left:6px}
 @media(max-width:640px){.sidebar{display:none}.content{padding:20px 16px 60px}.stats-row{grid-template-columns:1fr 1fr}.rank-podium{grid-template-columns:1fr}.mobile-nav{display:flex!important}}
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-top:1px solid var(--bd);padding:8px 0;z-index:100;justify-content:space-around}
 .mob-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--tx2);font-size:10px;font-family:var(--sans);cursor:pointer;padding:6px 12px}
@@ -152,7 +161,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 </style>
 </head>
 <body>
-
 <div class="layout" id="app-layout">
   <aside class="sidebar">
     <div class="sb-logo" onclick="go('home')">
@@ -167,95 +175,61 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
     <div class="sb-section">Mon espace</div>
     <button class="sb-item" id="nav-profile" onclick="go('profile')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>Mon profil</button>
     <button class="sb-item" id="nav-auth" onclick="go('auth')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span id="nav-auth-text">Connexion</span></button>
-    <div class="sb-user">
-      <button class="sb-user-btn" onclick="go('profile')">
-        <div class="sb-av" id="sb-av">?</div>
-        <div><span class="sb-uname" id="sb-uname">Non connecté</span><span class="sb-urole" id="sb-urole">Visiteur</span></div>
-      </button>
-    </div>
+    <button class="sb-item" id="nav-admin" onclick="go('admin')" style="display:none"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Modération<span class="mod-count" id="mod-count" style="display:none">0</span></button>
+    <div class="sb-user"><button class="sb-user-btn" onclick="go('profile')"><div class="sb-av" id="sb-av">?</div><div><span class="sb-uname" id="sb-uname">Non connecté</span><span class="sb-urole" id="sb-urole">Visiteur</span></div></button></div>
   </aside>
-
   <main class="main">
-    <div id="pg-home" class="page active">
-      <div class="content">
-        <div class="pg-header">
-          <h1>Bienvenue sur PariSchool</h1>
-          <p>Fais valoir ton droit à la liberté d'expression.<br>Donne-nous ton honnête avis sur ton établissement.</p>
-        </div>
-        <div class="stats-row">
-          <div class="stat-card"><div class="stat-num" id="st-s">—</div><div class="stat-lbl">Établissements</div><div class="stat-tag">Paris & IDF</div></div>
-          <div class="stat-card"><div class="stat-num" id="st-a">—</div><div class="stat-lbl">Avis publiés</div><div class="stat-tag">Par des élèves</div></div>
-          <div class="stat-card"><div class="stat-num" id="st-m">—</div><div class="stat-lbl">Note moyenne</div><div class="stat-tag">Sur 5 étoiles</div></div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div class="section-title" style="margin:0;border:none;padding:0">Établissements à la une</div>
-          <button class="btn-ghost" onclick="go('search')" style="font-size:12px;padding:6px 14px">Voir tout →</button>
-        </div>
-        <div class="school-list" id="home-list"><div class="loading">Chargement</div></div>
+    <div id="pg-home" class="page active"><div class="content">
+      <div class="pg-header"><h1>Bienvenue sur PariSchool</h1><p>Fais valoir ton droit à la liberté d'expression.<br>Donne-nous ton honnête avis sur ton établissement.</p></div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-num" id="st-s">—</div><div class="stat-lbl">Établissements</div><div class="stat-tag">Paris & IDF</div></div>
+        <div class="stat-card"><div class="stat-num" id="st-a">—</div><div class="stat-lbl">Avis publiés</div><div class="stat-tag">Par des élèves</div></div>
+        <div class="stat-card"><div class="stat-num" id="st-m">—</div><div class="stat-lbl">Note moyenne</div><div class="stat-tag">Sur 5 étoiles</div></div>
       </div>
-    </div>
-
-    <div id="pg-search" class="page">
-      <div class="content">
-        <div class="pg-header"><h1>Rechercher</h1><p id="s-desc">Tous les établissements référencés à Paris.</p></div>
-        <div class="search-box">
-          <svg class="sico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
-          <input type="text" id="sq" placeholder="Nom de l'établissement..." oninput="renderSearch()">
-        </div>
-        <div class="ftabs">
-          <button class="ftab active" onclick="setF('tous',this)">Tous</button>
-          <button class="ftab" onclick="setF('college',this)">Collèges</button>
-          <button class="ftab" onclick="setF('lycee',this)">Lycées</button>
-        </div>
-        <div class="school-list" id="search-list"><div class="loading">Chargement</div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+        <div class="section-title" style="margin:0;border:none;padding:0">Établissements à la une</div>
+        <button class="btn-ghost" onclick="go('search')" style="font-size:12px;padding:6px 14px">Voir tout →</button>
       </div>
-    </div>
-
-    <div id="pg-detail" class="page">
-      <div class="content">
-        <button class="back-link" onclick="go('search')"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>
-        <div id="detail-content"></div>
-      </div>
-    </div>
-
-    <div id="pg-rank" class="page">
-      <div class="content">
-        <div class="pg-header"><h1>Classement</h1><p>Établissements classés par note moyenne des élèves.</p></div>
-        <div class="rank-podium" id="podium"></div>
-        <div class="ftabs">
-          <button class="ftab active" onclick="setRF('tous',this)">Tous</button>
-          <button class="ftab" onclick="setRF('college',this)">Collèges</button>
-          <button class="ftab" onclick="setRF('lycee',this)">Lycées</button>
-        </div>
-        <div class="school-list" id="rank-list"><div class="loading">Chargement</div></div>
-      </div>
-    </div>
-
-    <div id="pg-profile" class="page">
-      <div class="content" id="profile-content"></div>
-    </div>
+      <div class="school-list" id="home-list"><div class="loading">Chargement</div></div>
+    </div></div>
+    <div id="pg-search" class="page"><div class="content">
+      <div class="pg-header"><h1>Rechercher</h1><p id="s-desc">Tous les établissements référencés à Paris.</p></div>
+      <div class="search-box"><svg class="sico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg><input type="text" id="sq" placeholder="Nom de l'établissement..." oninput="renderSearch()"></div>
+      <div class="ftabs"><button class="ftab active" onclick="setF('tous',this)">Tous</button><button class="ftab" onclick="setF('college',this)">Collèges</button><button class="ftab" onclick="setF('lycee',this)">Lycées</button></div>
+      <div class="school-list" id="search-list"><div class="loading">Chargement</div></div>
+    </div></div>
+    <div id="pg-detail" class="page"><div class="content">
+      <button class="back-link" onclick="go('search')"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>
+      <div id="detail-content"></div>
+    </div></div>
+    <div id="pg-rank" class="page"><div class="content">
+      <div class="pg-header"><h1>Classement</h1><p>Établissements classés par note moyenne des élèves.</p></div>
+      <div class="rank-podium" id="podium"></div>
+      <div class="ftabs"><button class="ftab active" onclick="setRF('tous',this)">Tous</button><button class="ftab" onclick="setRF('college',this)">Collèges</button><button class="ftab" onclick="setRF('lycee',this)">Lycées</button></div>
+      <div class="school-list" id="rank-list"><div class="loading">Chargement</div></div>
+    </div></div>
+    <div id="pg-profile" class="page"><div class="content" id="profile-content"></div></div>
+    <div id="pg-admin" class="page"><div class="content">
+      <div class="pg-header"><h1>🛡️ Modération</h1><p>Gère les avis en attente et signalés. Toi seul peux voir cette page.</p></div>
+      <div class="ftabs"><button class="ftab active" onclick="setMF('pending',this)">⏳ En attente</button><button class="ftab" onclick="setMF('all',this)">📋 Tous les avis</button></div>
+      <div id="admin-list"><div class="loading">Chargement</div></div>
+    </div></div>
   </main>
 </div>
-
 <nav class="mobile-nav">
   <button class="mob-btn active" id="mob-home" onclick="go('home')"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h3a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h3a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>Accueil</button>
   <button class="mob-btn" id="mob-search" onclick="go('search')"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>Rechercher</button>
   <button class="mob-btn" id="mob-rank" onclick="go('rank')"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>Classement</button>
   <button class="mob-btn" id="mob-profile" onclick="go('profile')"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>Profil</button>
 </nav>
-
 <div id="pg-auth" style="display:none">
   <div class="auth-layout">
     <div class="auth-top-bar"><button class="auth-back" onclick="go('home')"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour à l'accueil</button></div>
     <div class="auth-card">
       <div class="auth-logo"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#111"/><rect x="7" y="20" width="6" height="10" rx="1" fill="white" opacity=".5"/><rect x="15" y="14" width="6" height="16" rx="1" fill="white" opacity=".75"/><rect x="23" y="9" width="6" height="21" rx="1" fill="white"/><path d="M10 17.5L11.2 14.8L14 14.4L12 12.5L12.5 9.7L10 11L7.5 9.7L8 12.5L6 14.4L8.8 14.8Z" fill="#FBBF24"/></svg><div class="auth-logo-text">PariSchool</div></div>
-      <h2>Bienvenue</h2>
-      <p>Rejoins la communauté des élèves parisiens</p>
+      <h2>Bienvenue</h2><p>Rejoins la communauté des élèves parisiens</p>
       <div class="auth-msg" id="auth-msg"></div>
-      <div class="auth-tabs">
-        <button class="auth-tab active" onclick="swAuth('in',this)">Connexion</button>
-        <button class="auth-tab" onclick="swAuth('up',this)">Inscription</button>
-      </div>
+      <div class="auth-tabs"><button class="auth-tab active" onclick="swAuth('in',this)">Connexion</button><button class="auth-tab" onclick="swAuth('up',this)">Inscription</button></div>
       <div id="auth-in">
         <div class="fg"><label>Email</label><input type="email" id="li-email" placeholder="ton@email.fr"></div>
         <div class="fg"><label>Mot de passe</label><input type="password" id="li-pwd" placeholder="••••••••"></div>
@@ -264,493 +238,120 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
       </div>
       <div id="auth-up" style="display:none">
         <div class="fg"><label>Pseudo</label><input type="text" id="up-pseudo" placeholder="TonPseudo75"></div>
-        <div class="fg-row">
-          <div class="fg"><label>Email</label><input type="email" id="up-email" placeholder="ton@email.fr"></div>
-          <div class="fg"><label>Mot de passe (6+ car.)</label><input type="password" id="up-pwd" placeholder="••••••••"></div>
-        </div>
+        <div class="fg-row"><div class="fg"><label>Email</label><input type="email" id="up-email" placeholder="ton@email.fr"></div><div class="fg"><label>Mot de passe (6+ car.)</label><input type="password" id="up-pwd" placeholder="••••••••"></div></div>
         <div class="fg"><label>Ton établissement</label><select id="up-school"><option value="">Choisir ton école...</option></select></div>
-        <div class="fg"><label>Ton niveau</label>
-          <select id="up-niveau">
-            <option value="">Choisir ton niveau...</option>
-            <optgroup label="Collège"><option>6ème</option><option>5ème</option><option>4ème</option><option>3ème</option></optgroup>
-            <optgroup label="Lycée"><option>Seconde</option><option>Première</option><option>Terminale</option></optgroup>
-            <optgroup label="Post-bac"><option>CPGE 1ère année</option><option>CPGE 2ème année</option><option>BTS</option></optgroup>
-          </select>
-        </div>
+        <div class="fg"><label>Ton niveau</label><select id="up-niveau"><option value="">Choisir ton niveau...</option><optgroup label="Collège"><option>6ème</option><option>5ème</option><option>4ème</option><option>3ème</option></optgroup><optgroup label="Lycée"><option>Seconde</option><option>Première</option><option>Terminale</option></optgroup><optgroup label="Post-bac"><option>CPGE 1ère année</option><option>CPGE 2ème année</option><option>BTS</option></optgroup></select></div>
         <button class="auth-submit" onclick="doSignup()">Créer mon compte →</button>
         <div class="auth-footer">Déjà un compte ? <span class="auth-link" onclick="swAuth('in',document.querySelectorAll('.auth-tab')[0])">Se connecter</span></div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
-
 <script>
-// =====================
-// CONNEXION SUPABASE
-// =====================
-const SUPA_URL = 'https://ibvgjibopfucmkathpxn.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlidmdqaWJvcGZ1Y21rYXRocHhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTE1OTgsImV4cCI6MjA5MDEyNzU5OH0.i7BNPjr2lANznit67uTINB3w8eF0JhDVTmioJCNWH7U';
-const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+const SUPA_URL='https://ibvgjibopfucmkathpxn.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlidmdqaWJvcGZ1Y21rYXRocHhuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1NTE1OTgsImV4cCI6MjA5MDEyNzU5OH0.i7BNPjr2lANznit67uTINB3w8eF0JhDVTmioJCNWH7U';
+const sb=supabase.createClient(SUPA_URL,SUPA_KEY);
+const ADMIN_EMAIL='arsene.peltier@gmail.com';
 
-// =====================
-// ÉTAT DE L'APP
-// =====================
-let allSchools = [];
-let filt = 'tous', rfilt = 'tous';
-let selStar = 0, isAnon = false;
-let curDetailId = null;
-let currentUser = null; // L'objet session Supabase
-let userMeta = null; // { pseudo, school, niveau }
+let allSchools=[],motsInterdits=[],filt='tous',rfilt='tous',mfilt='pending',selStar=0,isAnon=false,curDetailId=null,currentUser=null,userMeta=null;
 
-// =====================
-// UTILITAIRES
-// =====================
-function stars(n) { let s=''; for(let i=1;i<=5;i++) s+=i<=Math.round(n)?'★':'☆'; return s; }
-function ini(name) { return (name||'?').substring(0,2).toUpperCase(); }
-function timeAgo(d) {
-  const diff = Date.now() - new Date(d);
-  const mins = Math.floor(diff/60000);
-  if(mins < 1) return "à l'instant";
-  if(mins < 60) return `il y a ${mins} min`;
-  const hrs = Math.floor(mins/60);
-  if(hrs < 24) return `il y a ${hrs}h`;
-  const days = Math.floor(hrs/24);
-  if(days < 30) return `il y a ${days}j`;
-  return new Date(d).toLocaleDateString('fr-FR',{month:'short',year:'numeric'});
-}
+function stars(n){let s='';for(let i=1;i<=5;i++)s+=i<=Math.round(n)?'★':'☆';return s}
+function ini(name){return(name||'?').substring(0,2).toUpperCase()}
+function isAdmin(){return currentUser?.email===ADMIN_EMAIL}
+function timeAgo(d){const diff=Date.now()-new Date(d);const mins=Math.floor(diff/60000);if(mins<1)return"à l'instant";if(mins<60)return`il y a ${mins} min`;const hrs=Math.floor(mins/60);if(hrs<24)return`il y a ${hrs}h`;const days=Math.floor(hrs/24);if(days<30)return`il y a ${days}j`;return new Date(d).toLocaleDateString('fr-FR',{month:'short',year:'numeric'})}
+function schoolRow(s,rank){const n=s.note_moyenne?parseFloat(s.note_moyenne).toFixed(1):'—';const cnt=s.nombre_avis||0;return`<div class="school-row" onclick="detail('${s.id}')">${rank!=null?`<div class="row-rank">${rank}</div>`:''}<div class="row-info"><div class="row-name">${s.nom}</div><div class="row-meta">Paris ${s.arrondissement}ème · ${(s.adresse||'').split(',')[0]}</div></div><span class="row-badge">${s.type==='college'?'Collège':'Lycée'}</span><div class="row-rating"><div><div class="row-stars">${n!=='—'?stars(parseFloat(n)):''}</div><div class="row-cnt">${cnt} avis</div></div><div class="row-num">${n}</div></div><span class="row-arr">›</span></div>`}
+function showAuthMsg(msg,isError){const el=document.getElementById('auth-msg');el.textContent=msg;el.className='auth-msg show'+(isError?' error':'')}
+function hideAuthMsg(){document.getElementById('auth-msg').className='auth-msg'}
 
-function schoolRow(s, rank) {
-  const n = s.note_moyenne ? parseFloat(s.note_moyenne).toFixed(1) : '—';
-  const cnt = s.nombre_avis || 0;
-  return `<div class="school-row" onclick="detail('${s.id}')">
-    ${rank!=null?`<div class="row-rank">${rank}</div>`:''}
-    <div class="row-info">
-      <div class="row-name">${s.nom}</div>
-      <div class="row-meta">Paris ${s.arrondissement}ème · ${(s.adresse||'').split(',')[0]}</div>
-    </div>
-    <span class="row-badge">${s.type==='college'?'Collège':'Lycée'}</span>
-    <div class="row-rating">
-      <div><div class="row-stars">${n!=='—'?stars(parseFloat(n)):''}</div><div class="row-cnt">${cnt} avis</div></div>
-      <div class="row-num">${n}</div>
-    </div>
-    <span class="row-arr">›</span>
-  </div>`;
-}
+// FILTRE GROS MOTS
+async function loadMotsInterdits(){const{data}=await sb.from('mots_interdits').select('mot');motsInterdits=(data||[]).map(m=>m.mot.toLowerCase())}
+function checkBadWords(text){const lower=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ');const found=[];for(const mot of motsInterdits){const mc=mot.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(lower.includes(mc))found.push(mot)}return found}
 
-function showAuthMsg(msg, isError) {
-  const el = document.getElementById('auth-msg');
-  el.textContent = msg;
-  el.className = 'auth-msg show' + (isError ? ' error' : '');
-}
+// DATA
+async function loadSchools(){const{data,error}=await sb.from('etablissements').select('*').order('note_moyenne',{ascending:false,nullsFirst:false});if(error){console.error(error);return[]}return data||[]}
+async function loadAvis(eid){const{data,error}=await sb.from('avis').select('*').eq('etablissement_id',eid).eq('signale',false).eq('en_attente',false).order('created_at',{ascending:false});if(error){console.error(error);return[]}return data||[]}
 
-function hideAuthMsg() {
-  document.getElementById('auth-msg').className = 'auth-msg';
-}
-
-// =====================
-// CHARGEMENT DONNÉES
-// =====================
-async function loadSchools() {
-  const { data, error } = await sb.from('etablissements').select('*').order('note_moyenne', { ascending: false, nullsFirst: false });
-  if(error) { console.error(error); return []; }
-  return data || [];
-}
-
-async function loadAvis(etablissementId) {
-  const { data, error } = await sb.from('avis').select('*').eq('etablissement_id', etablissementId).eq('signale', false).order('created_at', { ascending: false });
-  if(error) { console.error(error); return []; }
-  return data || [];
-}
-
-// =====================
 // HOME
-// =====================
-async function renderHome() {
-  if(!allSchools.length) allSchools = await loadSchools();
-  const top = allSchools.slice(0, 10);
-  document.getElementById('home-list').innerHTML = top.length ? top.map(s=>schoolRow(s)).join('') : '<div class="empty"><span>🏫</span>Aucun établissement trouvé</div>';
-  document.getElementById('st-s').textContent = allSchools.length;
-  const totalAvis = allSchools.reduce((a,s)=>a+(s.nombre_avis||0),0);
-  document.getElementById('st-a').textContent = totalAvis;
-  const notees = allSchools.filter(s=>s.note_moyenne>0);
-  document.getElementById('st-m').textContent = notees.length ? (notees.reduce((a,s)=>a+parseFloat(s.note_moyenne),0)/notees.length).toFixed(1) : '—';
-}
+async function renderHome(){if(!allSchools.length)allSchools=await loadSchools();const top=allSchools.slice(0,10);document.getElementById('home-list').innerHTML=top.length?top.map(s=>schoolRow(s)).join(''):'<div class="empty"><span>🏫</span>Aucun établissement trouvé</div>';document.getElementById('st-s').textContent=allSchools.length;const totalAvis=allSchools.reduce((a,s)=>a+(s.nombre_avis||0),0);document.getElementById('st-a').textContent=totalAvis;const notees=allSchools.filter(s=>s.note_moyenne>0);document.getElementById('st-m').textContent=notees.length?(notees.reduce((a,s)=>a+parseFloat(s.note_moyenne),0)/notees.length).toFixed(1):'—'}
 
-// =====================
 // SEARCH
-// =====================
-function renderSearch() {
-  const q = (document.getElementById('sq')||{value:''}).value.toLowerCase();
-  let list = allSchools.filter(s => {
-    const m = s.nom.toLowerCase().includes(q) || (s.adresse||'').toLowerCase().includes(q);
-    if(filt==='college') return m && s.type==='college';
-    if(filt==='lycee') return m && s.type==='lycee';
-    return m;
-  });
-  document.getElementById('s-desc').textContent = `${list.length} établissement${list.length>1?'s':''} trouvé${list.length>1?'s':''}.`;
-  document.getElementById('search-list').innerHTML = list.length ? list.map(s=>schoolRow(s)).join('') : '<div class="empty"><span>🔍</span>Aucun établissement trouvé</div>';
-}
+function renderSearch(){const q=(document.getElementById('sq')||{value:''}).value.toLowerCase();let list=allSchools.filter(s=>{const m=s.nom.toLowerCase().includes(q)||(s.adresse||'').toLowerCase().includes(q);if(filt==='college')return m&&s.type==='college';if(filt==='lycee')return m&&s.type==='lycee';return m});document.getElementById('s-desc').textContent=`${list.length} établissement${list.length>1?'s':''} trouvé${list.length>1?'s':''}.`;document.getElementById('search-list').innerHTML=list.length?list.map(s=>schoolRow(s)).join(''):'<div class="empty"><span>🔍</span>Aucun établissement trouvé</div>'}
 
-// =====================
-// RANKING
-// =====================
-function renderRank() {
-  let list = [...allSchools].filter(s=>s.note_moyenne>0).sort((a,b)=>b.note_moyenne-a.note_moyenne);
-  if(rfilt==='college') list = list.filter(s=>s.type==='college');
-  if(rfilt==='lycee') list = list.filter(s=>s.type==='lycee');
-  document.getElementById('podium').innerHTML = list.slice(0,3).map((s,i)=>`
-    <div class="podium-card" onclick="detail('${s.id}')">
-      <span class="podium-medal">${['🥇','🥈','🥉'][i]}</span>
-      <div class="podium-name">${s.nom}</div>
-      <div class="podium-score">⭐ ${parseFloat(s.note_moyenne).toFixed(1)}</div>
-    </div>`).join('');
-  document.getElementById('rank-list').innerHTML = list.length ? list.map((s,i)=>schoolRow(s,i+1)).join('') : '<div class="empty"><span>⭐</span>Aucun établissement noté</div>';
-}
+// RANK
+function renderRank(){let list=[...allSchools].filter(s=>s.note_moyenne>0).sort((a,b)=>b.note_moyenne-a.note_moyenne);if(rfilt==='college')list=list.filter(s=>s.type==='college');if(rfilt==='lycee')list=list.filter(s=>s.type==='lycee');document.getElementById('podium').innerHTML=list.slice(0,3).map((s,i)=>`<div class="podium-card" onclick="detail('${s.id}')"><span class="podium-medal">${['🥇','🥈','🥉'][i]}</span><div class="podium-name">${s.nom}</div><div class="podium-score">⭐ ${parseFloat(s.note_moyenne).toFixed(1)}</div></div>`).join('');document.getElementById('rank-list').innerHTML=list.length?list.map((s,i)=>schoolRow(s,i+1)).join(''):'<div class="empty"><span>⭐</span>Aucun établissement noté</div>'}
 
-// =====================
 // DETAIL
-// =====================
-async function detail(id) {
-  curDetailId = id; selStar = 0; isAnon = false;
-  const s = allSchools.find(x=>x.id===id);
-  if(!s) return;
-  document.getElementById('detail-content').innerHTML = '<div class="loading">Chargement des avis</div>';
-  go('detail');
-  const avis = await loadAvis(id);
-  const n = avis.length ? (avis.reduce((a,r)=>a+r.note,0)/avis.length) : null;
-  const counts = [5,4,3,2,1].map(x=>avis.filter(a=>a.note===x).length);
-  
-  // Formulaire d'avis : seulement si connecté
-  let formHTML = '';
-  if(currentUser) {
-    formHTML = `
-    <div class="form-block">
-      <h3>Donner mon avis</h3>
-      <div class="star-row">${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="setStar(${n})">★</button>`).join('')}</div>
-      <label class="form-lbl">Commentaire</label>
-      <textarea class="form-input" id="rev-txt" rows="3" placeholder="Décris ton expérience honnêtement (min. 10 caractères)..."></textarea>
-      <div class="anon-row" onclick="toggleAnon()">
-        <div class="anon-check" id="anon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><span class="anon-label">Publier anonymement</span><span class="anon-sub">Ton pseudo ne sera pas affiché</span></div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn-primary" onclick="submitRev('${id}')">Publier →</button>
-        <button class="btn-ghost" onclick="go('search')">Annuler</button>
-      </div>
-    </div>`;
-  } else {
-    formHTML = `
-    <div class="login-required">
-      <p>🔒 Tu dois être connecté pour donner ton avis</p>
-      <button class="btn-primary" onclick="go('auth')">Se connecter →</button>
-    </div>`;
-  }
+async function detail(id){curDetailId=id;selStar=0;isAnon=false;const s=allSchools.find(x=>x.id===id);if(!s)return;document.getElementById('detail-content').innerHTML='<div class="loading">Chargement des avis</div>';go('detail');const avis=await loadAvis(id);const n=avis.length?(avis.reduce((a,r)=>a+r.note,0)/avis.length):null;const counts=[5,4,3,2,1].map(x=>avis.filter(a=>a.note===x).length);
+let formHTML='';
+if(currentUser){formHTML=`<div class="form-block"><h3>Donner mon avis</h3><div class="star-row">${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="setStar(${n})">★</button>`).join('')}</div><label class="form-lbl">Commentaire</label><textarea class="form-input" id="rev-txt" rows="3" placeholder="Décris ton expérience honnêtement (min. 10 caractères)..."></textarea><div class="anon-row" onclick="toggleAnon()"><div class="anon-check" id="anon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span class="anon-label">Publier anonymement</span><span class="anon-sub">Ton pseudo ne sera pas affiché</span></div></div><div style="display:flex;gap:8px"><button class="btn-primary" onclick="submitRev('${id}')">Publier →</button><button class="btn-ghost" onclick="go('search')">Annuler</button></div></div>`}else{formHTML=`<div class="login-required"><p>🔒 Tu dois être connecté pour donner ton avis</p><button class="btn-primary" onclick="go('auth')">Se connecter →</button></div>`}
+document.getElementById('detail-content').innerHTML=`<div class="detail-hero"><span class="badge">${s.type==='college'?'Collège':'Lycée'}</span><h2>${s.nom}</h2><div class="detail-addr">📍 ${s.adresse||''}</div><div class="rating-block"><div><div class="big-num">${n?n.toFixed(1):'—'}</div><span class="big-stars">${n?stars(n):''}</span><div class="big-sub">${avis.length} avis d'élèves</div></div><div class="rating-bars">${[5,4,3,2,1].map((x,i)=>`<div class="bar-row"><span class="bar-lbl">${x}</span><div class="bar-track"><div class="bar-fill" style="width:${avis.length?counts[i]/avis.length*100:0}%"></div></div><span class="bar-cnt">${counts[i]}</span></div>`).join('')}</div></div></div><div class="section-title">Avis des élèves (${avis.length})</div>${avis.length?avis.map(a=>`<div class="rev-item"><div class="rev-head"><div class="rev-author"><div class="rev-av" style="${a.anonyme?'background:var(--bg3);color:var(--tx3)':''}">${a.anonyme?'👤':ini(a.auteur_pseudo||'?')}</div><span class="rev-name">${a.anonyme?'Élève anonyme':(a.auteur_pseudo||'Élève')}</span>${a.anonyme?'<span class="rev-anon">anonyme</span>':''}</div><span class="rev-date">${timeAgo(a.created_at)}</span></div><div class="rev-stars">${stars(a.note)} ${a.note}/5</div><div class="rev-text">${a.commentaire}</div></div>`).join(''):'<div class="empty"><span>💬</span>Aucun avis. Sois le premier !</div>'}${formHTML}`}
 
-  document.getElementById('detail-content').innerHTML = `
-    <div class="detail-hero">
-      <span class="badge">${s.type==='college'?'Collège':'Lycée'}</span>
-      <h2>${s.nom}</h2>
-      <div class="detail-addr">📍 ${s.adresse||''}</div>
-      <div class="rating-block">
-        <div>
-          <div class="big-num">${n?n.toFixed(1):'—'}</div>
-          <span class="big-stars">${n?stars(n):''}</span>
-          <div class="big-sub">${avis.length} avis d'élèves</div>
-        </div>
-        <div class="rating-bars">
-          ${[5,4,3,2,1].map((x,i)=>`<div class="bar-row"><span class="bar-lbl">${x}</span><div class="bar-track"><div class="bar-fill" style="width:${avis.length?counts[i]/avis.length*100:0}%"></div></div><span class="bar-cnt">${counts[i]}</span></div>`).join('')}
-        </div>
-      </div>
-    </div>
-    <div class="section-title">Avis des élèves (${avis.length})</div>
-    ${avis.length ? avis.map(a=>`
-      <div class="rev-item">
-        <div class="rev-head">
-          <div class="rev-author">
-            <div class="rev-av" style="${a.anonyme?'background:var(--bg3);color:var(--tx3)':''}">${a.anonyme?'👤':ini(a.auteur_pseudo||'?')}</div>
-            <span class="rev-name">${a.anonyme?'Élève anonyme':(a.auteur_pseudo||'Élève')}</span>
-            ${a.anonyme?'<span class="rev-anon">anonyme</span>':''}
-          </div>
-          <span class="rev-date">${timeAgo(a.created_at)}</span>
-        </div>
-        <div class="rev-stars">${stars(a.note)} ${a.note}/5</div>
-        <div class="rev-text">${a.commentaire}</div>
-        <button class="rev-flag" onclick="flagAvis('${a.id}','${id}')">🚩 Signaler</button>
-      </div>`).join('') : '<div class="empty"><span>💬</span>Aucun avis. Sois le premier !</div>'}
-    ${formHTML}`;
-}
+function toggleAnon(){isAnon=!isAnon;document.getElementById('anon-check').classList.toggle('checked',isAnon)}
+function setStar(n){selStar=n;document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('on',i<n))}
 
-function toggleAnon() { isAnon=!isAnon; document.getElementById('anon-check').classList.toggle('checked',isAnon); }
-function setStar(n) { selStar=n; document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('on',i<n)); }
+async function submitRev(sid){
+if(!currentUser){toast('Connecte-toi pour poster un avis');go('auth');return}
+const txt=document.getElementById('rev-txt').value.trim();
+if(!selStar){toast('Choisis une note en étoiles');return}
+if(txt.length<10){toast('Écris au moins 10 caractères');return}
+const badWords=checkBadWords(txt);
+const isPending=badWords.length>0;
+const pseudo=isAnon?null:(userMeta?.pseudo||currentUser.email.split('@')[0]);
+const{error}=await sb.from('avis').insert({etablissement_id:sid,auteur_id:currentUser.id,auteur_pseudo:pseudo,note:selStar,commentaire:txt,anonyme:isAnon,en_attente:isPending,signale:false});
+if(error){toast('Erreur lors de la publication');console.error(error);return}
+if(isPending){toast('⏳ Ton avis contient des mots suspects. Il sera vérifié avant publication.');setTimeout(()=>detail(sid),600);return}
+allSchools=await loadSchools();
+toast(isAnon?'Avis anonyme publié ✓':'Avis publié ✓');
+setTimeout(()=>detail(sid),600)}
 
-async function submitRev(sid) {
-  if(!currentUser) { toast('Connecte-toi pour poster un avis'); go('auth'); return; }
-  const txt = document.getElementById('rev-txt').value.trim();
-  if(!selStar) { toast('Choisis une note en étoiles'); return; }
-  if(txt.length < 10) { toast('Écris au moins 10 caractères'); return; }
-  
-  const pseudo = isAnon ? null : (userMeta?.pseudo || currentUser.email.split('@')[0]);
-  const { error } = await sb.from('avis').insert({
-    etablissement_id: sid,
-    auteur_id: currentUser.id,
-    auteur_pseudo: pseudo,
-    note: selStar,
-    commentaire: txt,
-    anonyme: isAnon
-  });
-  if(error) { toast('Erreur lors de la publication'); console.error(error); return; }
-  allSchools = await loadSchools();
-  toast(isAnon ? 'Avis anonyme publié ✓' : 'Avis publié ✓');
-  setTimeout(() => detail(sid), 600);
-}
+// ADMIN
+async function renderAdmin(){
+if(!isAdmin()){go('home');return}
+let query=sb.from('avis').select('*').order('created_at',{ascending:false});
+if(mfilt==='pending')query=query.eq('en_attente',true);
+const{data:avisList}=await query;const avis=avisList||[];
+const pendingCount=avis.filter(a=>a.en_attente).length;
+const countEl=document.getElementById('mod-count');
+if(pendingCount>0){countEl.style.display='inline-flex';countEl.textContent=pendingCount}else{countEl.style.display='none'}
+if(!avis.length){document.getElementById('admin-list').innerHTML=`<div class="empty"><span>✅</span>${mfilt==='pending'?'Aucun avis en attente — tout est clean !':'Aucun avis trouvé'}</div>`;return}
+document.getElementById('admin-list').innerHTML=avis.map(a=>{const school=allSchools.find(s=>s.id===a.etablissement_id);const schoolName=school?school.nom:'Inconnu';const bw=checkBadWords(a.commentaire);return`<div class="mod-card ${a.en_attente?'pending':''}"><div class="mod-meta"><strong>${a.anonyme?'Anonyme':(a.auteur_pseudo||'Élève')}</strong> · ${schoolName} · ${timeAgo(a.created_at)}${a.en_attente?'<span class="mod-badge warn">⏳ En attente</span>':''}${bw.length?'<span class="mod-badge danger">⚠️ '+bw.join(', ')+'</span>':''}</div><div class="mod-stars">${stars(a.note)} ${a.note}/5</div><div class="mod-text">${a.commentaire}</div><div class="mod-actions">${a.en_attente?`<button class="btn-success" onclick="approveAvis('${a.id}')">✅ Approuver</button>`:''}<button class="btn-danger" onclick="deleteAvis('${a.id}')">🗑️ Supprimer</button></div></div>`}).join('')}
 
-async function flagAvis(avisId, schoolId) {
-  await sb.from('avis').update({ signale: true }).eq('id', avisId);
-  toast('Avis signalé — merci');
-  setTimeout(() => detail(schoolId), 500);
-}
+async function approveAvis(id){await sb.from('avis').update({en_attente:false}).eq('id',id);allSchools=await loadSchools();toast('Avis approuvé ✓');renderAdmin()}
+async function deleteAvis(id){await sb.from('avis').delete().eq('id',id);allSchools=await loadSchools();toast('Avis supprimé ✓');renderAdmin()}
+function setMF(f,btn){mfilt=f;document.querySelectorAll('#pg-admin .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAdmin()}
 
-// =====================
-// AUTH — VRAIE AUTH SUPABASE
-// =====================
-function swAuth(t, btn) {
-  document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('auth-in').style.display = t==='in'?'block':'none';
-  document.getElementById('auth-up').style.display = t==='up'?'block':'none';
-  hideAuthMsg();
-}
+// AUTH
+function swAuth(t,btn){document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('auth-in').style.display=t==='in'?'block':'none';document.getElementById('auth-up').style.display=t==='up'?'block':'none';hideAuthMsg()}
 
-async function doLogin() {
-  const email = document.getElementById('li-email').value.trim();
-  const pwd = document.getElementById('li-pwd').value;
-  if(!email || !pwd) { showAuthMsg('Remplis tous les champs', true); return; }
-  
-  showAuthMsg('Connexion en cours...', false);
-  const { data, error } = await sb.auth.signInWithPassword({ email, password: pwd });
-  
-  if(error) {
-    if(error.message.includes('Email not confirmed')) {
-      showAuthMsg('Vérifie tes emails pour confirmer ton compte avant de te connecter 📧', true);
-    } else {
-      showAuthMsg('Email ou mot de passe incorrect', true);
-    }
-    return;
-  }
-  
-  currentUser = data.user;
-  userMeta = {
-    pseudo: data.user.user_metadata?.pseudo || email.split('@')[0],
-    school: data.user.user_metadata?.school,
-    niveau: data.user.user_metadata?.niveau
-  };
-  updateUI();
-  toast('Connecté ✓ Bienvenue ' + userMeta.pseudo);
-  go('home');
-}
+async function doLogin(){const email=document.getElementById('li-email').value.trim();const pwd=document.getElementById('li-pwd').value;if(!email||!pwd){showAuthMsg('Remplis tous les champs',true);return}showAuthMsg('Connexion en cours...',false);const{data,error}=await sb.auth.signInWithPassword({email,password:pwd});if(error){if(error.message.includes('Email not confirmed')){showAuthMsg('Vérifie tes emails pour confirmer ton compte avant de te connecter 📧',true)}else{showAuthMsg('Email ou mot de passe incorrect',true)}return}currentUser=data.user;userMeta={pseudo:data.user.user_metadata?.pseudo||email.split('@')[0],school:data.user.user_metadata?.school,niveau:data.user.user_metadata?.niveau};updateUI();toast('Connecté ✓ Bienvenue '+userMeta.pseudo);go('home')}
 
-async function doSignup() {
-  const pseudo = document.getElementById('up-pseudo').value.trim();
-  const email = document.getElementById('up-email').value.trim();
-  const pwd = document.getElementById('up-pwd').value;
-  const school = document.getElementById('up-school').value;
-  const niveau = document.getElementById('up-niveau').value;
-  
-  if(!pseudo) { showAuthMsg('Choisis un pseudo', true); return; }
-  if(!email) { showAuthMsg('Entre ton email', true); return; }
-  if(!pwd || pwd.length < 6) { showAuthMsg('Le mot de passe doit faire au moins 6 caractères', true); return; }
-  if(!school) { showAuthMsg('Choisis ton établissement', true); return; }
-  if(!niveau) { showAuthMsg('Choisis ton niveau', true); return; }
-  
-  showAuthMsg('Création du compte...', false);
-  const { data, error } = await sb.auth.signUp({
-    email,
-    password: pwd,
-    options: {
-      data: { pseudo, school, niveau },
-      emailRedirectTo: 'https://pari-school.vercel.app'
-    }
-  });
-  
-  if(error) {
-    if(error.message.includes('already registered') || error.message.includes('already been registered')) {
-      showAuthMsg('Cet email est déjà utilisé. Connecte-toi ou utilise un autre email.', true);
-    } else {
-      showAuthMsg('Erreur : ' + error.message, true);
-    }
-    return;
-  }
-  
-  // Vérifier si l'email doit être confirmé
-  if(data.user && !data.session) {
-    // Email de confirmation envoyé
-    showAuthMsg('✅ Compte créé ! Vérifie tes emails (et tes spams) pour confirmer ton compte. Ensuite reviens te connecter.', false);
-    // Vider les champs
-    document.getElementById('up-pseudo').value = '';
-    document.getElementById('up-email').value = '';
-    document.getElementById('up-pwd').value = '';
-    document.getElementById('up-school').value = '';
-    document.getElementById('up-niveau').value = '';
-  } else if(data.session) {
-    // Directement connecté (si confirm email désactivé)
-    currentUser = data.user;
-    userMeta = { pseudo, school, niveau };
-    updateUI();
-    toast('Bienvenue ' + pseudo + ' ✓');
-    go('home');
-  }
-}
+async function doSignup(){const pseudo=document.getElementById('up-pseudo').value.trim();const email=document.getElementById('up-email').value.trim();const pwd=document.getElementById('up-pwd').value;const school=document.getElementById('up-school').value;const niveau=document.getElementById('up-niveau').value;if(!pseudo){showAuthMsg('Choisis un pseudo',true);return}if(!email){showAuthMsg('Entre ton email',true);return}if(!pwd||pwd.length<6){showAuthMsg('Le mot de passe doit faire au moins 6 caractères',true);return}if(!school){showAuthMsg('Choisis ton établissement',true);return}if(!niveau){showAuthMsg('Choisis ton niveau',true);return}showAuthMsg('Création du compte...',false);const{data,error}=await sb.auth.signUp({email,password:pwd,options:{data:{pseudo,school,niveau},emailRedirectTo:'https://pari-school.vercel.app'}});if(error){if(error.message.includes('already registered')||error.message.includes('already been registered')){showAuthMsg('Cet email est déjà utilisé. Connecte-toi ou utilise un autre email.',true)}else{showAuthMsg('Erreur : '+error.message,true)}return}if(data.user&&!data.session){showAuthMsg('✅ Compte créé ! Vérifie tes emails (et tes spams) pour confirmer ton compte. Ensuite reviens te connecter.',false);document.getElementById('up-pseudo').value='';document.getElementById('up-email').value='';document.getElementById('up-pwd').value='';document.getElementById('up-school').value='';document.getElementById('up-niveau').value=''}else if(data.session){currentUser=data.user;userMeta={pseudo,school,niveau};updateUI();toast('Bienvenue '+pseudo+' ✓');go('home')}}
 
-// =====================
-// UI UPDATE (connecté/déconnecté)
-// =====================
-function updateUI() {
-  if(currentUser && userMeta) {
-    document.getElementById('sb-av').textContent = ini(userMeta.pseudo);
-    document.getElementById('sb-uname').textContent = userMeta.pseudo;
-    document.getElementById('sb-urole').textContent = userMeta.niveau || userMeta.school || 'Élève';
-    document.getElementById('nav-auth-text').textContent = 'Déconnexion';
-    document.getElementById('nav-auth').onclick = () => logout();
-  } else {
-    document.getElementById('sb-av').textContent = '?';
-    document.getElementById('sb-uname').textContent = 'Non connecté';
-    document.getElementById('sb-urole').textContent = 'Visiteur';
-    document.getElementById('nav-auth-text').textContent = 'Connexion';
-    document.getElementById('nav-auth').onclick = () => go('auth');
-  }
-}
+// UI
+function updateUI(){if(currentUser&&userMeta){document.getElementById('sb-av').textContent=ini(userMeta.pseudo);document.getElementById('sb-uname').textContent=userMeta.pseudo;document.getElementById('sb-urole').textContent=userMeta.niveau||userMeta.school||'Élève';document.getElementById('nav-auth-text').textContent='Déconnexion';document.getElementById('nav-auth').onclick=()=>logout();document.getElementById('nav-admin').style.display=isAdmin()?'flex':'none';if(isAdmin())updateModCount()}else{document.getElementById('sb-av').textContent='?';document.getElementById('sb-uname').textContent='Non connecté';document.getElementById('sb-urole').textContent='Visiteur';document.getElementById('nav-auth-text').textContent='Connexion';document.getElementById('nav-auth').onclick=()=>go('auth');document.getElementById('nav-admin').style.display='none'}}
 
-async function logout() {
-  await sb.auth.signOut();
-  currentUser = null;
-  userMeta = null;
-  updateUI();
-  toast('Déconnecté');
-  go('home');
-}
+async function updateModCount(){const{data}=await sb.from('avis').select('id').eq('en_attente',true);const count=(data||[]).length;const el=document.getElementById('mod-count');if(count>0){el.style.display='inline-flex';el.textContent=count}else{el.style.display='none'}}
 
-// =====================
+async function logout(){await sb.auth.signOut();currentUser=null;userMeta=null;updateUI();toast('Déconnecté');go('home')}
+
 // PROFILE
-// =====================
-function renderProfile() {
-  const backBtn = `<button class="back-link" onclick="go('home')" style="margin-bottom:20px"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>`;
-  
-  if(currentUser && userMeta) {
-    document.getElementById('profile-content').innerHTML = `
-    ${backBtn}
-    <div class="pg-header"><h1>Mon profil</h1></div>
-    <div class="profile-header">
-      <div class="profile-av">${ini(userMeta.pseudo)}</div>
-      <div>
-        <div class="profile-name">${userMeta.pseudo}</div>
-        <div class="profile-school">🏫 ${userMeta.school || 'Non renseigné'}</div>
-        <div class="profile-niveau">📚 ${userMeta.niveau || 'Niveau non renseigné'}</div>
-        <div style="font-size:11px;color:var(--tx3);margin-top:4px">📧 ${currentUser.email}</div>
-        <div class="profile-badges" style="margin-top:8px">
-          <span class="p-badge">✅ Email vérifié</span>
-          <span class="p-badge">Élève</span>
-          <span class="p-badge">Paris</span>
-        </div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <button class="btn-ghost" onclick="logout()" style="color:#dc2626;border-color:#fecaca">Se déconnecter</button>`;
-  } else {
-    document.getElementById('profile-content').innerHTML = `
-    ${backBtn}
-    <div style="text-align:center;padding:60px 20px">
-      <div style="font-size:48px;margin-bottom:16px">👤</div>
-      <div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;font-weight:900">Pas encore connecté</div>
-      <div style="color:var(--tx2);font-size:13px;margin-bottom:24px">Crée un compte pour publier des avis et rejoindre la communauté.</div>
-      <button class="btn-primary" onclick="go('auth')">Se connecter →</button>
-    </div>`;
-  }
-}
+function renderProfile(){const backBtn=`<button class="back-link" onclick="go('home')" style="margin-bottom:20px"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>`;if(currentUser&&userMeta){document.getElementById('profile-content').innerHTML=`${backBtn}<div class="pg-header"><h1>Mon profil</h1></div><div class="profile-header"><div class="profile-av">${ini(userMeta.pseudo)}</div><div><div class="profile-name">${userMeta.pseudo}</div><div class="profile-school">🏫 ${userMeta.school||'Non renseigné'}</div><div class="profile-niveau">📚 ${userMeta.niveau||'Niveau non renseigné'}</div><div style="font-size:11px;color:var(--tx3);margin-top:4px">📧 ${currentUser.email}</div><div class="profile-badges" style="margin-top:8px"><span class="p-badge">✅ Email vérifié</span><span class="p-badge">Élève</span><span class="p-badge">Paris</span>${isAdmin()?'<span class="p-badge" style="background:#fef3c7;color:#92400e;border-color:#fde68a">👑 Admin</span>':''}</div></div></div><div class="divider"></div><button class="btn-ghost" onclick="logout()" style="color:#dc2626;border-color:#fecaca">Se déconnecter</button>`}else{document.getElementById('profile-content').innerHTML=`${backBtn}<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">👤</div><div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;font-weight:900">Pas encore connecté</div><div style="color:var(--tx2);font-size:13px;margin-bottom:24px">Crée un compte pour publier des avis et rejoindre la communauté.</div><button class="btn-primary" onclick="go('auth')">Se connecter →</button></div>`}}
 
-// =====================
-// NAVIGATION
-// =====================
-function setF(f, btn) { filt=f; document.querySelectorAll('#pg-search .ftab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderSearch(); }
-function setRF(f, btn) { rfilt=f; document.querySelectorAll('#pg-rank .ftab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderRank(); }
+// NAV
+function setF(f,btn){filt=f;document.querySelectorAll('#pg-search .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderSearch()}
+function setRF(f,btn){rfilt=f;document.querySelectorAll('#pg-rank .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderRank()}
 
-function go(p) {
-  ['home','search','detail','rank','profile'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});
-  document.getElementById('pg-auth').style.display='none';
-  document.getElementById('app-layout').style.display='flex';
-  if(p==='auth'){
-    if(currentUser) { logout(); return; }
-    document.getElementById('app-layout').style.display='none';
-    document.getElementById('pg-auth').style.display='block';
-    hideAuthMsg();
-  }
-  else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active');}
-  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));
-  const ni=document.getElementById('nav-'+p); if(ni)ni.classList.add('active');
-  const mi=document.getElementById('mob-'+p); if(mi)mi.classList.add('active');
-  if(p==='home')renderHome();
-  if(p==='search')renderSearch();
-  if(p==='rank')renderRank();
-  if(p==='profile')renderProfile();
-}
+function go(p){['home','search','detail','rank','profile','admin'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});document.getElementById('pg-auth').style.display='none';document.getElementById('app-layout').style.display='flex';if(p==='auth'){if(currentUser){logout();return}document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';hideAuthMsg()}else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active')}document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));const ni=document.getElementById('nav-'+p);if(ni)ni.classList.add('active');const mi=document.getElementById('mob-'+p);if(mi)mi.classList.add('active');if(p==='home')renderHome();if(p==='search')renderSearch();if(p==='rank')renderRank();if(p==='profile')renderProfile();if(p==='admin')renderAdmin()}
 
-function toast(m) { const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
-// =====================
 // INIT
-// =====================
-async function init() {
-  // Vérifier si l'utilisateur est déjà connecté (session existante)
-  const { data: { session } } = await sb.auth.getSession();
-  if(session?.user) {
-    currentUser = session.user;
-    userMeta = {
-      pseudo: session.user.user_metadata?.pseudo || session.user.email.split('@')[0],
-      school: session.user.user_metadata?.school,
-      niveau: session.user.user_metadata?.niveau
-    };
-    updateUI();
-  }
-  
-  // Écouter les changements d'auth (important pour la confirmation email)
-  sb.auth.onAuthStateChange((event, session) => {
-    if(event === 'SIGNED_IN' && session?.user) {
-      currentUser = session.user;
-      userMeta = {
-        pseudo: session.user.user_metadata?.pseudo || session.user.email.split('@')[0],
-        school: session.user.user_metadata?.school,
-        niveau: session.user.user_metadata?.niveau
-      };
-      updateUI();
-    }
-    if(event === 'SIGNED_OUT') {
-      currentUser = null;
-      userMeta = null;
-      updateUI();
-    }
-  });
-  
-  // Charger les établissements
-  allSchools = await loadSchools();
-  
-  // Remplir le select de l'inscription
-  const sc = document.getElementById('up-school');
-  const sorted = [...allSchools].sort((a,b) => a.nom.localeCompare(b.nom));
-  sorted.forEach(s => {
-    const o = document.createElement('option');
-    o.value = s.nom;
-    o.textContent = s.nom;
-    sc.appendChild(o);
-  });
-  
-  // Afficher les pages
-  renderHome();
-  renderSearch();
-  renderRank();
-}
-
+async function init(){const{data:{session}}=await sb.auth.getSession();if(session?.user){currentUser=session.user;userMeta={pseudo:session.user.user_metadata?.pseudo||session.user.email.split('@')[0],school:session.user.user_metadata?.school,niveau:session.user.user_metadata?.niveau};updateUI()}
+sb.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session?.user){currentUser=session.user;userMeta={pseudo:session.user.user_metadata?.pseudo||session.user.email.split('@')[0],school:session.user.user_metadata?.school,niveau:session.user.user_metadata?.niveau};updateUI()}if(event==='SIGNED_OUT'){currentUser=null;userMeta=null;updateUI()}});
+allSchools=await loadSchools();await loadMotsInterdits();
+const sc=document.getElementById('up-school');const sorted=[...allSchools].sort((a,b)=>a.nom.localeCompare(b.nom));sorted.forEach(s=>{const o=document.createElement('option');o.value=s.nom;o.textContent=s.nom;sc.appendChild(o)});
+renderHome();renderSearch();renderRank()}
 init();
 </script>
 </body>
