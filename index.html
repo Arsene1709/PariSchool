@@ -118,6 +118,9 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .auth-submit:hover{opacity:.85}
 .auth-footer{text-align:center;margin-top:12px;font-size:12px;color:var(--tx3)}
 .auth-link{color:var(--tx);cursor:pointer;text-decoration:underline}
+.auth-msg{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--r);padding:14px;margin-bottom:16px;font-size:13px;color:#166534;text-align:center;display:none}
+.auth-msg.error{background:#fef2f2;border-color:#fecaca;color:#991b1b}
+.auth-msg.show{display:block}
 .profile-header{display:flex;align-items:flex-start;gap:20px;padding:24px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;margin-bottom:20px;box-shadow:var(--shadow);flex-wrap:wrap}
 .profile-av{width:64px;height:64px;border-radius:12px;background:var(--acc);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;font-weight:900;color:#fff;flex-shrink:0}
 .profile-name{font-family:var(--serif);font-size:22px;font-weight:900;margin-bottom:3px}
@@ -140,6 +143,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 @keyframes spin{to{transform:rotate(360deg)}}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--acc);color:#fff;padding:9px 20px;border-radius:var(--r);font-size:13px;font-weight:600;opacity:0;transition:all .25s;z-index:500;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.login-required{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:22px;margin-top:24px;text-align:center}
+.login-required p{color:var(--tx2);font-size:13px;margin-bottom:12px}
 @media(max-width:640px){.sidebar{display:none}.content{padding:20px 16px 60px}.stats-row{grid-template-columns:1fr 1fr}.rank-podium{grid-template-columns:1fr}.mobile-nav{display:flex!important}}
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-top:1px solid var(--bd);padding:8px 0;z-index:100;justify-content:space-around}
 .mob-btn{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--tx2);font-size:10px;font-family:var(--sans);cursor:pointer;padding:6px 12px}
@@ -161,7 +166,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
     <div class="sb-divider"></div>
     <div class="sb-section">Mon espace</div>
     <button class="sb-item" id="nav-profile" onclick="go('profile')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>Mon profil</button>
-    <button class="sb-item" id="nav-auth" onclick="go('auth')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Connexion</button>
+    <button class="sb-item" id="nav-auth" onclick="go('auth')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span id="nav-auth-text">Connexion</span></button>
     <div class="sb-user">
       <button class="sb-user-btn" onclick="go('profile')">
         <div class="sb-av" id="sb-av">?</div>
@@ -246,12 +251,13 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
       <div class="auth-logo"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#111"/><rect x="7" y="20" width="6" height="10" rx="1" fill="white" opacity=".5"/><rect x="15" y="14" width="6" height="16" rx="1" fill="white" opacity=".75"/><rect x="23" y="9" width="6" height="21" rx="1" fill="white"/><path d="M10 17.5L11.2 14.8L14 14.4L12 12.5L12.5 9.7L10 11L7.5 9.7L8 12.5L6 14.4L8.8 14.8Z" fill="#FBBF24"/></svg><div class="auth-logo-text">PariSchool</div></div>
       <h2>Bienvenue</h2>
       <p>Rejoins la communauté des élèves parisiens</p>
+      <div class="auth-msg" id="auth-msg"></div>
       <div class="auth-tabs">
         <button class="auth-tab active" onclick="swAuth('in',this)">Connexion</button>
         <button class="auth-tab" onclick="swAuth('up',this)">Inscription</button>
       </div>
       <div id="auth-in">
-        <div class="fg"><label>Email scolaire</label><input type="email" id="li-email" placeholder="prenom.nom@ac-paris.fr"></div>
+        <div class="fg"><label>Email</label><input type="email" id="li-email" placeholder="ton@email.fr"></div>
         <div class="fg"><label>Mot de passe</label><input type="password" id="li-pwd" placeholder="••••••••"></div>
         <button class="auth-submit" onclick="doLogin()">Se connecter</button>
         <div class="auth-footer">Pas de compte ? <span class="auth-link" onclick="swAuth('up',document.querySelectorAll('.auth-tab')[1])">S'inscrire</span></div>
@@ -259,8 +265,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
       <div id="auth-up" style="display:none">
         <div class="fg"><label>Pseudo</label><input type="text" id="up-pseudo" placeholder="TonPseudo75"></div>
         <div class="fg-row">
-          <div class="fg"><label>Email scolaire</label><input type="email" id="up-email" placeholder="ton@email.fr"></div>
-          <div class="fg"><label>Mot de passe</label><input type="password" id="up-pwd" placeholder="••••••••"></div>
+          <div class="fg"><label>Email</label><input type="email" id="up-email" placeholder="ton@email.fr"></div>
+          <div class="fg"><label>Mot de passe (6+ car.)</label><input type="password" id="up-pwd" placeholder="••••••••"></div>
         </div>
         <div class="fg"><label>Ton établissement</label><select id="up-school"><option value="">Choisir ton école...</option></select></div>
         <div class="fg"><label>Ton niveau</label>
@@ -295,7 +301,8 @@ let allSchools = [];
 let filt = 'tous', rfilt = 'tous';
 let selStar = 0, isAnon = false;
 let curDetailId = null;
-let user = null;
+let currentUser = null; // L'objet session Supabase
+let userMeta = null; // { pseudo, school, niveau }
 
 // =====================
 // UTILITAIRES
@@ -330,6 +337,16 @@ function schoolRow(s, rank) {
     </div>
     <span class="row-arr">›</span>
   </div>`;
+}
+
+function showAuthMsg(msg, isError) {
+  const el = document.getElementById('auth-msg');
+  el.textContent = msg;
+  el.className = 'auth-msg show' + (isError ? ' error' : '');
+}
+
+function hideAuthMsg() {
+  document.getElementById('auth-msg').className = 'auth-msg';
 }
 
 // =====================
@@ -389,7 +406,7 @@ function renderRank() {
       <div class="podium-name">${s.nom}</div>
       <div class="podium-score">⭐ ${parseFloat(s.note_moyenne).toFixed(1)}</div>
     </div>`).join('');
-  document.getElementById('rank-list').innerHTML = list.map((s,i)=>schoolRow(s,i+1)).join('');
+  document.getElementById('rank-list').innerHTML = list.length ? list.map((s,i)=>schoolRow(s,i+1)).join('') : '<div class="empty"><span>⭐</span>Aucun établissement noté</div>';
 }
 
 // =====================
@@ -404,6 +421,33 @@ async function detail(id) {
   const avis = await loadAvis(id);
   const n = avis.length ? (avis.reduce((a,r)=>a+r.note,0)/avis.length) : null;
   const counts = [5,4,3,2,1].map(x=>avis.filter(a=>a.note===x).length);
+  
+  // Formulaire d'avis : seulement si connecté
+  let formHTML = '';
+  if(currentUser) {
+    formHTML = `
+    <div class="form-block">
+      <h3>Donner mon avis</h3>
+      <div class="star-row">${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="setStar(${n})">★</button>`).join('')}</div>
+      <label class="form-lbl">Commentaire</label>
+      <textarea class="form-input" id="rev-txt" rows="3" placeholder="Décris ton expérience honnêtement (min. 10 caractères)..."></textarea>
+      <div class="anon-row" onclick="toggleAnon()">
+        <div class="anon-check" id="anon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><span class="anon-label">Publier anonymement</span><span class="anon-sub">Ton pseudo ne sera pas affiché</span></div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-primary" onclick="submitRev('${id}')">Publier →</button>
+        <button class="btn-ghost" onclick="go('search')">Annuler</button>
+      </div>
+    </div>`;
+  } else {
+    formHTML = `
+    <div class="login-required">
+      <p>🔒 Tu dois être connecté pour donner ton avis</p>
+      <button class="btn-primary" onclick="go('auth')">Se connecter →</button>
+    </div>`;
+  }
+
   document.getElementById('detail-content').innerHTML = `
     <div class="detail-hero">
       <span class="badge">${s.type==='college'?'Collège':'Lycée'}</span>
@@ -435,40 +479,28 @@ async function detail(id) {
         <div class="rev-text">${a.commentaire}</div>
         <button class="rev-flag" onclick="flagAvis('${a.id}','${id}')">🚩 Signaler</button>
       </div>`).join('') : '<div class="empty"><span>💬</span>Aucun avis. Sois le premier !</div>'}
-    <div class="form-block">
-      <h3>Donner mon avis</h3>
-      <div class="star-row">${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="setStar(${n})">★</button>`).join('')}</div>
-      <label class="form-lbl">Commentaire</label>
-      <textarea class="form-input" id="rev-txt" rows="3" placeholder="Décris ton expérience honnêtement (min. 10 caractères)..."></textarea>
-      <div class="anon-row" onclick="toggleAnon()">
-        <div class="anon-check" id="anon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><span class="anon-label">Publier anonymement</span><span class="anon-sub">Ton pseudo ne sera pas affiché</span></div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn-primary" onclick="submitRev('${id}')">Publier →</button>
-        <button class="btn-ghost" onclick="go('search')">Annuler</button>
-      </div>
-    </div>`;
+    ${formHTML}`;
 }
 
 function toggleAnon() { isAnon=!isAnon; document.getElementById('anon-check').classList.toggle('checked',isAnon); }
 function setStar(n) { selStar=n; document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('on',i<n)); }
 
 async function submitRev(sid) {
+  if(!currentUser) { toast('Connecte-toi pour poster un avis'); go('auth'); return; }
   const txt = document.getElementById('rev-txt').value.trim();
   if(!selStar) { toast('Choisis une note en étoiles'); return; }
   if(txt.length < 10) { toast('Écris au moins 10 caractères'); return; }
-  const pseudo = isAnon ? null : (user?.pseudo || 'Visiteur');
+  
+  const pseudo = isAnon ? null : (userMeta?.pseudo || currentUser.email.split('@')[0]);
   const { error } = await sb.from('avis').insert({
     etablissement_id: sid,
-    auteur_id: null,
+    auteur_id: currentUser.id,
     auteur_pseudo: pseudo,
     note: selStar,
     commentaire: txt,
     anonyme: isAnon
   });
   if(error) { toast('Erreur lors de la publication'); console.error(error); return; }
-  // Mettre à jour note_moyenne localement
   allSchools = await loadSchools();
   toast(isAnon ? 'Avis anonyme publié ✓' : 'Avis publié ✓');
   setTimeout(() => detail(sid), 600);
@@ -481,57 +513,122 @@ async function flagAvis(avisId, schoolId) {
 }
 
 // =====================
-// AUTH
+// AUTH — VRAIE AUTH SUPABASE
 // =====================
 function swAuth(t, btn) {
   document.querySelectorAll('.auth-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('auth-in').style.display = t==='in'?'block':'none';
   document.getElementById('auth-up').style.display = t==='up'?'block':'none';
+  hideAuthMsg();
 }
 
 async function doLogin() {
-  const email = document.getElementById('li-email').value;
+  const email = document.getElementById('li-email').value.trim();
   const pwd = document.getElementById('li-pwd').value;
+  if(!email || !pwd) { showAuthMsg('Remplis tous les champs', true); return; }
+  
+  showAuthMsg('Connexion en cours...', false);
   const { data, error } = await sb.auth.signInWithPassword({ email, password: pwd });
-  if(error) { toast('Email ou mot de passe incorrect'); return; }
-  user = { pseudo: data.user.user_metadata?.pseudo || email.split('@')[0], school: data.user.user_metadata?.school, niveau: data.user.user_metadata?.niveau };
-  updateSidebar();
-  toast('Connecté ✓');
+  
+  if(error) {
+    if(error.message.includes('Email not confirmed')) {
+      showAuthMsg('Vérifie tes emails pour confirmer ton compte avant de te connecter 📧', true);
+    } else {
+      showAuthMsg('Email ou mot de passe incorrect', true);
+    }
+    return;
+  }
+  
+  currentUser = data.user;
+  userMeta = {
+    pseudo: data.user.user_metadata?.pseudo || email.split('@')[0],
+    school: data.user.user_metadata?.school,
+    niveau: data.user.user_metadata?.niveau
+  };
+  updateUI();
+  toast('Connecté ✓ Bienvenue ' + userMeta.pseudo);
   go('home');
 }
 
 async function doSignup() {
-  const pseudo = document.getElementById('up-pseudo').value.trim() || 'Élève75';
-  const email = document.getElementById('up-email').value;
+  const pseudo = document.getElementById('up-pseudo').value.trim();
+  const email = document.getElementById('up-email').value.trim();
   const pwd = document.getElementById('up-pwd').value;
   const school = document.getElementById('up-school').value;
   const niveau = document.getElementById('up-niveau').value;
-  if(!email || !pwd) { toast('Remplis tous les champs'); return; }
-  const { data, error } = await sb.auth.signUp({ email, password: pwd, options: { data: { pseudo, school, niveau } } });
-  if(error) { toast('Erreur : ' + error.message); return; }
-  user = { pseudo, school, niveau };
-  updateSidebar();
-  toast('Bienvenue ' + pseudo + ' ✓');
-  go('profile');
+  
+  if(!pseudo) { showAuthMsg('Choisis un pseudo', true); return; }
+  if(!email) { showAuthMsg('Entre ton email', true); return; }
+  if(!pwd || pwd.length < 6) { showAuthMsg('Le mot de passe doit faire au moins 6 caractères', true); return; }
+  if(!school) { showAuthMsg('Choisis ton établissement', true); return; }
+  if(!niveau) { showAuthMsg('Choisis ton niveau', true); return; }
+  
+  showAuthMsg('Création du compte...', false);
+  const { data, error } = await sb.auth.signUp({
+    email,
+    password: pwd,
+    options: {
+      data: { pseudo, school, niveau },
+      emailRedirectTo: 'https://pari-school.vercel.app'
+    }
+  });
+  
+  if(error) {
+    if(error.message.includes('already registered') || error.message.includes('already been registered')) {
+      showAuthMsg('Cet email est déjà utilisé. Connecte-toi ou utilise un autre email.', true);
+    } else {
+      showAuthMsg('Erreur : ' + error.message, true);
+    }
+    return;
+  }
+  
+  // Vérifier si l'email doit être confirmé
+  if(data.user && !data.session) {
+    // Email de confirmation envoyé
+    showAuthMsg('✅ Compte créé ! Vérifie tes emails (et tes spams) pour confirmer ton compte. Ensuite reviens te connecter.', false);
+    // Vider les champs
+    document.getElementById('up-pseudo').value = '';
+    document.getElementById('up-email').value = '';
+    document.getElementById('up-pwd').value = '';
+    document.getElementById('up-school').value = '';
+    document.getElementById('up-niveau').value = '';
+  } else if(data.session) {
+    // Directement connecté (si confirm email désactivé)
+    currentUser = data.user;
+    userMeta = { pseudo, school, niveau };
+    updateUI();
+    toast('Bienvenue ' + pseudo + ' ✓');
+    go('home');
+  }
 }
 
-function updateSidebar() {
-  if(user) {
-    document.getElementById('sb-av').textContent = ini(user.pseudo);
-    document.getElementById('sb-uname').textContent = user.pseudo;
-    document.getElementById('sb-urole').textContent = user.niveau || user.school || 'Élève';
+// =====================
+// UI UPDATE (connecté/déconnecté)
+// =====================
+function updateUI() {
+  if(currentUser && userMeta) {
+    document.getElementById('sb-av').textContent = ini(userMeta.pseudo);
+    document.getElementById('sb-uname').textContent = userMeta.pseudo;
+    document.getElementById('sb-urole').textContent = userMeta.niveau || userMeta.school || 'Élève';
+    document.getElementById('nav-auth-text').textContent = 'Déconnexion';
+    document.getElementById('nav-auth').onclick = () => logout();
+  } else {
+    document.getElementById('sb-av').textContent = '?';
+    document.getElementById('sb-uname').textContent = 'Non connecté';
+    document.getElementById('sb-urole').textContent = 'Visiteur';
+    document.getElementById('nav-auth-text').textContent = 'Connexion';
+    document.getElementById('nav-auth').onclick = () => go('auth');
   }
 }
 
 async function logout() {
   await sb.auth.signOut();
-  user = null;
-  document.getElementById('sb-av').textContent = '?';
-  document.getElementById('sb-uname').textContent = 'Non connecté';
-  document.getElementById('sb-urole').textContent = 'Visiteur';
+  currentUser = null;
+  userMeta = null;
+  updateUI();
   toast('Déconnecté');
-  renderProfile();
+  go('home');
 }
 
 // =====================
@@ -539,28 +636,37 @@ async function logout() {
 // =====================
 function renderProfile() {
   const backBtn = `<button class="back-link" onclick="go('home')" style="margin-bottom:20px"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>`;
-  document.getElementById('profile-content').innerHTML = user ? `
+  
+  if(currentUser && userMeta) {
+    document.getElementById('profile-content').innerHTML = `
     ${backBtn}
     <div class="pg-header"><h1>Mon profil</h1></div>
     <div class="profile-header">
-      <div class="profile-av">${ini(user.pseudo)}</div>
+      <div class="profile-av">${ini(userMeta.pseudo)}</div>
       <div>
-        <div class="profile-name">${user.pseudo}</div>
-        <div class="profile-school">🏫 ${user.school||'Non renseigné'}</div>
-        <div class="profile-niveau">📚 ${user.niveau||'Niveau non renseigné'}</div>
-        <div class="profile-badges"><span class="p-badge">Élève</span><span class="p-badge">Paris</span></div>
+        <div class="profile-name">${userMeta.pseudo}</div>
+        <div class="profile-school">🏫 ${userMeta.school || 'Non renseigné'}</div>
+        <div class="profile-niveau">📚 ${userMeta.niveau || 'Niveau non renseigné'}</div>
+        <div style="font-size:11px;color:var(--tx3);margin-top:4px">📧 ${currentUser.email}</div>
+        <div class="profile-badges" style="margin-top:8px">
+          <span class="p-badge">✅ Email vérifié</span>
+          <span class="p-badge">Élève</span>
+          <span class="p-badge">Paris</span>
+        </div>
       </div>
     </div>
     <div class="divider"></div>
-    <button class="btn-ghost" onclick="logout()">Se déconnecter</button>
-  ` : `
+    <button class="btn-ghost" onclick="logout()" style="color:#dc2626;border-color:#fecaca">Se déconnecter</button>`;
+  } else {
+    document.getElementById('profile-content').innerHTML = `
     ${backBtn}
     <div style="text-align:center;padding:60px 20px">
       <div style="font-size:48px;margin-bottom:16px">👤</div>
       <div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;font-weight:900">Pas encore connecté</div>
-      <div style="color:var(--tx2);font-size:13px;margin-bottom:24px">Crée un compte pour publier des avis.</div>
+      <div style="color:var(--tx2);font-size:13px;margin-bottom:24px">Crée un compte pour publier des avis et rejoindre la communauté.</div>
       <button class="btn-primary" onclick="go('auth')">Se connecter →</button>
     </div>`;
+  }
 }
 
 // =====================
@@ -573,7 +679,12 @@ function go(p) {
   ['home','search','detail','rank','profile'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});
   document.getElementById('pg-auth').style.display='none';
   document.getElementById('app-layout').style.display='flex';
-  if(p==='auth'){document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';}
+  if(p==='auth'){
+    if(currentUser) { logout(); return; }
+    document.getElementById('app-layout').style.display='none';
+    document.getElementById('pg-auth').style.display='block';
+    hideAuthMsg();
+  }
   else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active');}
   document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));
@@ -591,18 +702,50 @@ function toast(m) { const t=document.getElementById('toast'); t.textContent=m; t
 // INIT
 // =====================
 async function init() {
-  // Vérifier si l'utilisateur est déjà connecté
+  // Vérifier si l'utilisateur est déjà connecté (session existante)
   const { data: { session } } = await sb.auth.getSession();
   if(session?.user) {
-    user = { pseudo: session.user.user_metadata?.pseudo || session.user.email.split('@')[0], school: session.user.user_metadata?.school, niveau: session.user.user_metadata?.niveau };
-    updateSidebar();
+    currentUser = session.user;
+    userMeta = {
+      pseudo: session.user.user_metadata?.pseudo || session.user.email.split('@')[0],
+      school: session.user.user_metadata?.school,
+      niveau: session.user.user_metadata?.niveau
+    };
+    updateUI();
   }
+  
+  // Écouter les changements d'auth (important pour la confirmation email)
+  sb.auth.onAuthStateChange((event, session) => {
+    if(event === 'SIGNED_IN' && session?.user) {
+      currentUser = session.user;
+      userMeta = {
+        pseudo: session.user.user_metadata?.pseudo || session.user.email.split('@')[0],
+        school: session.user.user_metadata?.school,
+        niveau: session.user.user_metadata?.niveau
+      };
+      updateUI();
+    }
+    if(event === 'SIGNED_OUT') {
+      currentUser = null;
+      userMeta = null;
+      updateUI();
+    }
+  });
+  
   // Charger les établissements
   allSchools = await loadSchools();
+  
   // Remplir le select de l'inscription
   const sc = document.getElementById('up-school');
-  allSchools.forEach(s=>{const o=document.createElement('option');o.value=s.nom;o.textContent=s.nom;sc.appendChild(o);});
-  // Afficher la home
+  const sorted = [...allSchools].sort((a,b) => a.nom.localeCompare(b.nom));
+  sorted.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s.nom;
+    o.textContent = s.nom;
+    sc.appendChild(o);
+  });
+  
+  // Afficher les pages
   renderHome();
   renderSearch();
   renderRank();
