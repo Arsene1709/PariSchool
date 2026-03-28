@@ -148,6 +148,19 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
 .gta-star-btn{font-size:26px;cursor:pointer;opacity:.2;transition:all .15s;background:none;border:none;line-height:1;padding:0}.gta-star-btn.on{opacity:1;filter:drop-shadow(0 0 4px rgba(220,38,38,.6))}
 .folie-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#dc2626;font-weight:700}
 .folie-block{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#fef2f2;border:1px solid #fecaca;border-radius:8px;margin-top:8px}
+.rev-actions{display:flex;align-items:center;gap:14px;margin-top:8px}
+.rev-like-btn{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--bd);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:12px;font-family:var(--sans);color:var(--tx2);transition:all .15s}
+.rev-like-btn:hover{background:var(--bg2);border-color:var(--bd2)}.rev-like-btn.liked{background:#fef2f2;border-color:#fecaca;color:#dc2626}
+.rev-reply-btn{background:none;border:none;cursor:pointer;font-size:12px;font-family:var(--sans);color:var(--tx3);transition:color .15s;padding:4px 0}
+.rev-reply-btn:hover{color:var(--tx)}
+.rev-replies{margin-top:10px;margin-left:37px;border-left:2px solid var(--bd);padding-left:14px}
+.reply-item{padding:8px 0;border-bottom:1px solid var(--bd)}.reply-item:last-child{border-bottom:none}
+.reply-author{font-size:12px;font-weight:600;color:var(--tx)}.reply-date{font-size:10px;color:var(--tx3);margin-left:6px}
+.reply-text{font-size:12px;color:var(--tx2);margin-top:3px;line-height:1.6}
+.reply-form{display:flex;gap:8px;margin-top:8px;margin-left:37px}
+.reply-form input{flex:1;padding:7px 10px;background:var(--bg);border:1px solid var(--bd2);border-radius:var(--r);font-size:12px;font-family:var(--sans);color:var(--tx);outline:none}
+.reply-form input:focus{border-color:#888}
+.reply-form button{padding:7px 14px;background:var(--acc);color:#fff;border:none;border-radius:var(--r);font-size:12px;font-family:var(--sans);font-weight:600;cursor:pointer}
 .mod-card{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;margin-bottom:12px;box-shadow:var(--shadow)}
 .mod-card.pending{border-left:4px solid #f59e0b}
 .mod-meta{font-size:11px;color:var(--tx3);margin-bottom:6px}
@@ -373,14 +386,42 @@ function renderSearch(){const q=(document.getElementById('sq')||{value:''}).valu
 function renderRank(){let list=[...allSchools].filter(s=>s.note_moyenne>0).sort((a,b)=>b.note_moyenne-a.note_moyenne);if(rfilt==='college')list=list.filter(s=>s.type==='college');if(rfilt==='lycee')list=list.filter(s=>s.type==='lycee');document.getElementById('podium').innerHTML=list.slice(0,3).map((s,i)=>`<div class="podium-card" onclick="detail('${s.id}')"><span class="podium-medal">${['🥇','🥈','🥉'][i]}</span><div class="podium-name">${s.nom}</div><div class="podium-score">⭐ ${parseFloat(s.note_moyenne).toFixed(1)}</div></div>`).join('');document.getElementById('rank-list').innerHTML=list.length?list.map((s,i)=>schoolRow(s,i+1)).join(''):'<div class="empty"><span>⭐</span>Aucun établissement noté</div>'}
 
 // DETAIL
-async function detail(id){curDetailId=id;selStar=0;selStarFolie=0;isAnon=false;const s=allSchools.find(x=>x.id===id);if(!s)return;document.getElementById('detail-content').innerHTML='<div class="loading">Chargement des avis</div>';go('detail');const avis=await loadAvis(id);const n=avis.length?(avis.reduce((a,r)=>a+r.note,0)/avis.length):null;const counts=[5,4,3,2,1].map(x=>avis.filter(a=>a.note===x).length);const folieAvis=avis.filter(a=>a.note_folie);const nf=folieAvis.length?(folieAvis.reduce((a,r)=>a+r.note_folie,0)/folieAvis.length):null;
+async function detail(id){curDetailId=id;selStar=0;selStarFolie=0;isAnon=false;const s=allSchools.find(x=>x.id===id);if(!s)return;document.getElementById('detail-content').innerHTML='<div class="loading">Chargement des avis</div>';go('detail');const avis=await loadAvis(id);
+// Charger likes et réponses
+let userLikes=[];
+if(currentUser){const{data:ul}=await sb.from('avis_likes').select('avis_id').eq('user_id',currentUser.id);userLikes=(ul||[]).map(l=>l.avis_id)}
+const avisIds=avis.map(a=>a.id);
+let allReplies=[];
+if(avisIds.length){const{data:reps}=await sb.from('avis_reponses').select('*').in('avis_id',avisIds).order('created_at',{ascending:true});allReplies=reps||[]}
+const n=avis.length?(avis.reduce((a,r)=>a+r.note,0)/avis.length):null;const counts=[5,4,3,2,1].map(x=>avis.filter(a=>a.note===x).length);const folieAvis=avis.filter(a=>a.note_folie);const nf=folieAvis.length?(folieAvis.reduce((a,r)=>a+r.note_folie,0)/folieAvis.length):null;
 let formHTML='';
 if(currentUser){formHTML=`<div class="form-block"><h3>Donner mon avis</h3><label class="form-lbl">Note générale</label><div class="star-row">${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="setStar(${n})">★</button>`).join('')}</div><label class="form-lbl">Niveau de folie</label><div class="star-row">${[1,2,3,4,5].map(n=>`<button class="gta-star-btn" onclick="setStarFolie(${n})">★</button>`).join('')}</div><label class="form-lbl">Commentaire</label><textarea class="form-input" id="rev-txt" rows="3" placeholder="Décris ton expérience honnêtement (min. 10 caractères)..."></textarea><div class="anon-row" onclick="toggleAnon()"><div class="anon-check" id="anon-check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><span class="anon-label">Publier anonymement</span><span class="anon-sub">Ton pseudo ne sera pas affiché</span></div></div><div style="display:flex;gap:8px"><button class="btn-primary" onclick="submitRev('${id}')">Publier →</button><button class="btn-ghost" onclick="go('search')">Annuler</button></div></div>`}else{formHTML=`<div class="login-required"><p>🔒 Tu dois être connecté pour donner ton avis</p><button class="btn-primary" onclick="go('auth')">Se connecter →</button></div>`}
-document.getElementById('detail-content').innerHTML=`<div class="detail-hero"><span class="badge">${s.type==='college'?'Collège':'Lycée'}</span><h2>${s.nom}</h2><div class="detail-addr">📍 ${s.adresse||''}</div><div class="rating-block"><div><div class="big-num">${n?n.toFixed(1):'—'}</div><span class="big-stars">${n?stars(n):''}</span><div class="big-sub">${avis.length} avis d'élèves</div>${nf?`<div class="folie-block"><span style="font-size:13px;font-weight:800;color:#dc2626">${nf.toFixed(1)}</span><span class="gta-stars">${gtaStars(nf)}</span><span style="font-size:11px;color:#991b1b">Niveau de folie</span></div>`:''}</div><div class="rating-bars">${[5,4,3,2,1].map((x,i)=>`<div class="bar-row"><span class="bar-lbl">${x}</span><div class="bar-track"><div class="bar-fill" style="width:${avis.length?counts[i]/avis.length*100:0}%"></div></div><span class="bar-cnt">${counts[i]}</span></div>`).join('')}</div></div></div><div class="section-title">Avis des élèves (${avis.length})</div>${avis.length?avis.map(a=>`<div class="rev-item"><div class="rev-head"><div class="rev-author"><div class="rev-av" style="${a.anonyme?'background:var(--bg3);color:var(--tx3)':''}">${a.anonyme?'👤':ini(a.auteur_pseudo||'?')}</div><span class="rev-name">${a.anonyme?'Élève anonyme':(a.auteur_pseudo||'Élève')}</span>${a.anonyme?'<span class="rev-anon">anonyme</span>':''}</div><span class="rev-date">${timeAgo(a.created_at)}</span></div><div class="rev-stars">${stars(a.note)} ${a.note}/5${a.note_folie?` · <span class="folie-badge">${gtaStars(a.note_folie)} ${a.note_folie}/5</span>`:''}</div><div class="rev-text">${a.commentaire}</div></div>`).join(''):'<div class="empty"><span>💬</span>Aucun avis. Sois le premier !</div>'}${formHTML}`}
+document.getElementById('detail-content').innerHTML=`<div class="detail-hero"><span class="badge">${s.type==='college'?'Collège':'Lycée'}</span><h2>${s.nom}</h2><div class="detail-addr">📍 ${s.adresse||''}</div><div class="rating-block"><div><div class="big-num">${n?n.toFixed(1):'—'}</div><span class="big-stars">${n?stars(n):''}</span><div class="big-sub">${avis.length} avis d'élèves</div>${nf?`<div class="folie-block"><span style="font-size:13px;font-weight:800;color:#dc2626">${nf.toFixed(1)}</span><span class="gta-stars">${gtaStars(nf)}</span><span style="font-size:11px;color:#991b1b">Niveau de folie</span></div>`:''}</div><div class="rating-bars">${[5,4,3,2,1].map((x,i)=>`<div class="bar-row"><span class="bar-lbl">${x}</span><div class="bar-track"><div class="bar-fill" style="width:${avis.length?counts[i]/avis.length*100:0}%"></div></div><span class="bar-cnt">${counts[i]}</span></div>`).join('')}</div></div></div><div class="section-title">Avis des élèves (${avis.length})</div>${avis.length?avis.map(a=>{const liked=userLikes.includes(a.id);const replies=allReplies.filter(r=>r.avis_id===a.id);return`<div class="rev-item"><div class="rev-head"><div class="rev-author"><div class="rev-av" style="${a.anonyme?'background:var(--bg3);color:var(--tx3)':''}">${a.anonyme?'👤':ini(a.auteur_pseudo||'?')}</div><span class="rev-name">${a.anonyme?'Élève anonyme':(a.auteur_pseudo||'Élève')}</span>${a.anonyme?'<span class="rev-anon">anonyme</span>':''}</div><span class="rev-date">${timeAgo(a.created_at)}</span></div><div class="rev-stars">${stars(a.note)} ${a.note}/5${a.note_folie?` · <span class="folie-badge">${gtaStars(a.note_folie)} ${a.note_folie}/5</span>`:''}</div><div class="rev-text">${a.commentaire}</div><div class="rev-actions"><button class="rev-like-btn ${liked?'liked':''}" onclick="toggleLike('${a.id}','${id}')">👍 ${a.likes||0}</button>${currentUser?`<button class="rev-reply-btn" onclick="showReplyForm('${a.id}')">💬 Répondre</button>`:''}</div>${replies.length?`<div class="rev-replies">${replies.map(r=>`<div class="reply-item"><span class="reply-author">${r.auteur_pseudo||'Élève'}</span><span class="reply-date">${timeAgo(r.created_at)}</span><div class="reply-text">${r.contenu}</div></div>`).join('')}</div>`:''}<div id="reply-form-${a.id}"></div></div>`}).join(''):'<div class="empty"><span>💬</span>Aucun avis. Sois le premier !</div>'}${formHTML}`}
 
 function toggleAnon(){isAnon=!isAnon;document.getElementById('anon-check').classList.toggle('checked',isAnon)}
 function setStar(n){selStar=n;document.querySelectorAll('.star-btn').forEach((b,i)=>b.classList.toggle('on',i<n))}
 function setStarFolie(n){selStarFolie=n;document.querySelectorAll('.gta-star-btn').forEach((b,i)=>b.classList.toggle('on',i<n))}
+
+async function toggleLike(avisId,schoolId){
+if(!currentUser){toast('Connecte-toi pour liker');return}
+const{data:existing}=await sb.from('avis_likes').select('id').eq('avis_id',avisId).eq('user_id',currentUser.id);
+if(existing&&existing.length>0){await sb.from('avis_likes').delete().eq('avis_id',avisId).eq('user_id',currentUser.id);await sb.from('avis').update({likes:sb.rpc?0:0}).eq('id',avisId);const{data:cnt}=await sb.from('avis_likes').select('id').eq('avis_id',avisId);await sb.from('avis').update({likes:(cnt||[]).length}).eq('id',avisId)}
+else{await sb.from('avis_likes').insert({avis_id:avisId,user_id:currentUser.id});const{data:cnt}=await sb.from('avis_likes').select('id').eq('avis_id',avisId);await sb.from('avis').update({likes:(cnt||[]).length}).eq('id',avisId)}
+detail(schoolId)}
+
+function showReplyForm(avisId){const el=document.getElementById('reply-form-'+avisId);if(el.innerHTML){el.innerHTML='';return}el.innerHTML=`<div class="reply-form"><input type="text" id="reply-txt-${avisId}" placeholder="Écrire une réponse..." onkeydown="if(event.key==='Enter')submitReply('${avisId}')"><button onclick="submitReply('${avisId}')">Envoyer</button></div>`}
+
+async function submitReply(avisId){
+if(!currentUser){toast('Connecte-toi pour répondre');return}
+const txt=document.getElementById('reply-txt-'+avisId).value.trim();
+if(txt.length<2){toast('Écris au moins 2 caractères');return}
+const badWords=checkBadWords(txt);
+if(badWords.length>0){toast('Ton message contient des mots inappropriés');return}
+const pseudo=userMeta?.pseudo||currentUser.email.split('@')[0];
+const{error}=await sb.from('avis_reponses').insert({avis_id:avisId,auteur_id:currentUser.id,auteur_pseudo:pseudo,contenu:txt});
+if(error){toast('Erreur');console.error(error);return}
+toast('Réponse publiée ✓');
+detail(curDetailId)}
 
 async function submitRev(sid){
 if(!currentUser){toast('Connecte-toi pour poster un avis');go('auth');return}
