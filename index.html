@@ -171,6 +171,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
     <button class="sb-item active" id="nav-home" onclick="go('home')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h3a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h3a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>Accueil</button>
     <button class="sb-item" id="nav-rank" onclick="go('rank')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>Classement</button>
     <button class="sb-item" id="nav-search" onclick="go('search')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>Rechercher</button>
+    <button class="sb-item" id="nav-about" onclick="go('about')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>À propos</button>
     <div class="sb-divider"></div>
     <div class="sb-section">Mon espace</div>
     <button class="sb-item" id="nav-profile" onclick="go('profile')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>Mon profil</button>
@@ -209,6 +210,47 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
       <div class="school-list" id="rank-list"><div class="loading">Chargement</div></div>
     </div></div>
     <div id="pg-profile" class="page"><div class="content" id="profile-content"></div></div>
+    <div id="pg-about" class="page"><div class="content">
+      <button class="back-link" onclick="go('home')"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>
+      <div class="pg-header"><h1>À propos de PariSchool</h1><p>La plateforme créée par des élèves, pour des élèves.</p></div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)">
+        <div style="font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:12px">💡 Pourquoi PariSchool ?</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:12px">PariSchool est né d'un constat simple : quand on est élève à Paris, on n'a aucun moyen de savoir ce que les autres pensent vraiment de leur collège ou lycée. Les classements officiels ne reflètent pas le vécu des élèves.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:12px">On a voulu créer un espace où chaque élève parisien peut s'exprimer librement, donner son avis honnête et aider les autres à mieux connaître les établissements de la capitale.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">PariSchool, c'est le droit à la liberté d'expression appliqué à l'école. Pas de censure des opinions, mais une modération stricte contre la haine, les insultes et le harcèlement.</p>
+      </div>
+      <div style="font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:14px">📊 PariSchool en chiffres</div>
+      <div class="stats-row" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-num" id="ab-s">—</div><div class="stat-lbl">Établissements</div><div class="stat-tag">Collèges & Lycées</div></div>
+        <div class="stat-card"><div class="stat-num">20</div><div class="stat-lbl">Arrondissements</div><div class="stat-tag">Tout Paris couvert</div></div>
+        <div class="stat-card"><div class="stat-num" id="ab-a">—</div><div class="stat-lbl">Avis publiés</div><div class="stat-tag">Par des élèves vérifiés</div></div>
+      </div>
+      <div style="font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:14px">🚀 Comment ça marche ?</div>
+      <div style="display:grid;gap:12px;margin-bottom:24px">
+        <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+          <div style="background:var(--acc);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:14px;flex-shrink:0">1</div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Crée ton compte</div><div style="color:var(--tx2);font-size:12px">Inscris-toi avec ton email. Tu recevras un lien de confirmation.</div></div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+          <div style="background:var(--acc);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:14px;flex-shrink:0">2</div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Trouve ton établissement</div><div style="color:var(--tx2);font-size:12px">Recherche ton collège ou lycée parmi les 430+ établissements parisiens référencés.</div></div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+          <div style="background:var(--acc);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:14px;flex-shrink:0">3</div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Donne ton avis</div><div style="color:var(--tx2);font-size:12px">Note ton établissement de 1 à 5 étoiles et laisse un commentaire honnête. Tu peux rester anonyme.</div></div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:18px;display:flex;gap:14px;align-items:flex-start">
+          <div style="background:var(--acc);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:900;font-size:14px;flex-shrink:0">4</div>
+          <div><div style="font-weight:700;font-size:13px;margin-bottom:3px">Découvre le classement</div><div style="color:var(--tx2);font-size:12px">Compare les établissements et découvre les mieux notés par les élèves parisiens.</div></div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;text-align:center">
+        <div style="font-family:var(--serif);font-size:17px;font-weight:800;margin-bottom:8px">🎓 Rejoins la communauté</div>
+        <p style="color:var(--tx2);font-size:13px;margin-bottom:16px">PariSchool est fait par des élèves parisiens pour des élèves parisiens. Ton avis compte !</p>
+        <button class="btn-primary" onclick="go('auth')" style="margin-right:8px">Créer un compte →</button>
+        <button class="btn-ghost" onclick="go('search')">Explorer les écoles</button>
+      </div>
+    </div></div>
     <div id="pg-admin" class="page"><div class="content">
       <div class="pg-header"><h1>🛡️ Modération</h1><p>Gère les avis en attente et signalés. Toi seul peux voir cette page.</p></div>
       <div class="ftabs"><button class="ftab active" onclick="setMF('pending',this)">⏳ En attente</button><button class="ftab" onclick="setMF('all',this)">📋 Tous les avis</button></div>
@@ -338,11 +380,14 @@ async function logout(){await sb.auth.signOut();currentUser=null;userMeta=null;u
 // PROFILE
 function renderProfile(){const backBtn=`<button class="back-link" onclick="go('home')" style="margin-bottom:20px"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>`;if(currentUser&&userMeta){document.getElementById('profile-content').innerHTML=`${backBtn}<div class="pg-header"><h1>Mon profil</h1></div><div class="profile-header"><div class="profile-av">${ini(userMeta.pseudo)}</div><div><div class="profile-name">${userMeta.pseudo}</div><div class="profile-school">🏫 ${userMeta.school||'Non renseigné'}</div><div class="profile-niveau">📚 ${userMeta.niveau||'Niveau non renseigné'}</div><div style="font-size:11px;color:var(--tx3);margin-top:4px">📧 ${currentUser.email}</div><div class="profile-badges" style="margin-top:8px"><span class="p-badge">✅ Email vérifié</span><span class="p-badge">Élève</span><span class="p-badge">Paris</span>${isAdmin()?'<span class="p-badge" style="background:#fef3c7;color:#92400e;border-color:#fde68a">👑 Admin</span>':''}</div></div></div><div class="divider"></div><button class="btn-ghost" onclick="logout()" style="color:#dc2626;border-color:#fecaca">Se déconnecter</button>`}else{document.getElementById('profile-content').innerHTML=`${backBtn}<div style="text-align:center;padding:60px 20px"><div style="font-size:48px;margin-bottom:16px">👤</div><div style="font-family:var(--serif);font-size:20px;margin-bottom:8px;font-weight:900">Pas encore connecté</div><div style="color:var(--tx2);font-size:13px;margin-bottom:24px">Crée un compte pour publier des avis et rejoindre la communauté.</div><button class="btn-primary" onclick="go('auth')">Se connecter →</button></div>`}}
 
+// ABOUT
+function renderAbout(){document.getElementById('ab-s').textContent=allSchools.length;const totalAvis=allSchools.reduce((a,s)=>a+(s.nombre_avis||0),0);document.getElementById('ab-a').textContent=totalAvis}
+
 // NAV
 function setF(f,btn){filt=f;document.querySelectorAll('#pg-search .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderSearch()}
 function setRF(f,btn){rfilt=f;document.querySelectorAll('#pg-rank .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderRank()}
 
-function go(p){['home','search','detail','rank','profile','admin'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});document.getElementById('pg-auth').style.display='none';document.getElementById('app-layout').style.display='flex';if(p==='auth'){if(currentUser){logout();return}document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';hideAuthMsg()}else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active')}document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));const ni=document.getElementById('nav-'+p);if(ni)ni.classList.add('active');const mi=document.getElementById('mob-'+p);if(mi)mi.classList.add('active');if(p==='home')renderHome();if(p==='search')renderSearch();if(p==='rank')renderRank();if(p==='profile')renderProfile();if(p==='admin')renderAdmin()}
+function go(p){['home','search','detail','rank','profile','about','admin'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});document.getElementById('pg-auth').style.display='none';document.getElementById('app-layout').style.display='flex';if(p==='auth'){if(currentUser){logout();return}document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';hideAuthMsg()}else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active')}document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));const ni=document.getElementById('nav-'+p);if(ni)ni.classList.add('active');const mi=document.getElementById('mob-'+p);if(mi)mi.classList.add('active');if(p==='home')renderHome();if(p==='search')renderSearch();if(p==='rank')renderRank();if(p==='profile')renderProfile();if(p==='about')renderAbout();if(p==='admin')renderAdmin()}
 
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
