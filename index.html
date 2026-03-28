@@ -172,6 +172,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
     <button class="sb-item" id="nav-rank" onclick="go('rank')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>Classement</button>
     <button class="sb-item" id="nav-search" onclick="go('search')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>Rechercher</button>
     <button class="sb-item" id="nav-about" onclick="go('about')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>À propos</button>
+    <button class="sb-item" id="nav-legal" onclick="go('legal')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/></svg>Mentions légales</button>
     <div class="sb-divider"></div>
     <div class="sb-section">Mon espace</div>
     <button class="sb-item" id="nav-profile" onclick="go('profile')"><svg class="sb-ico" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>Mon profil</button>
@@ -250,6 +251,48 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
         <button class="btn-primary" onclick="go('auth')" style="margin-right:8px">Créer un compte →</button>
         <button class="btn-ghost" onclick="go('search')">Explorer les écoles</button>
       </div>
+    </div></div>
+    <div id="pg-legal" class="page"><div class="content">
+      <button class="back-link" onclick="go('home')"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>Retour</button>
+      <div class="pg-header"><h1>Mentions légales & CGU</h1><p>Conditions d'utilisation de la plateforme PariSchool.</p></div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">1. Éditeur du site</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">Le site PariSchool (pari-school.vercel.app) est un projet personnel à but non lucratif, édité par un particulier résidant à Paris, France. Contact : via la plateforme uniquement.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">2. Hébergement</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis. Les données sont stockées par Supabase Inc. (base de données) sur des serveurs situés dans l'Union Européenne (AWS eu-west-1).</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">3. Conditions d'utilisation</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:10px">En utilisant PariSchool, vous acceptez les conditions suivantes :</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• Vous devez être élève dans un établissement scolaire parisien pour publier un avis.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• Les avis doivent refléter une expérience personnelle honnête.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• Sont strictement interdits : les insultes, le harcèlement, l'incitation à la haine, l'apologie du terrorisme, les contenus à caractère sexuel, la diffamation, les menaces, et la publication de données personnelles (noms complets, numéros de téléphone, adresses).</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">• Les avis ne respectant pas ces règles seront supprimés et le compte pourra être banni.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">4. Protection des données (RGPD)</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:10px">Conformément au Règlement Général sur la Protection des Données (RGPD), nous collectons uniquement les données nécessaires au fonctionnement du service :</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• <strong>Données collectées :</strong> adresse email, pseudo, établissement, niveau scolaire, avis publiés.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• <strong>Finalité :</strong> permettre la publication d'avis et le fonctionnement de la plateforme.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• <strong>Durée de conservation :</strong> vos données sont conservées tant que votre compte est actif.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8;margin-bottom:8px">• <strong>Vos droits :</strong> vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous via la plateforme.</p>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">• <strong>Cookies :</strong> PariSchool n'utilise aucun cookie publicitaire. Seuls des cookies techniques nécessaires à l'authentification sont utilisés.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">5. Propriété intellectuelle</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">L'ensemble du contenu du site (design, code, logo, textes) est la propriété de l'éditeur de PariSchool. Toute reproduction sans autorisation est interdite. Les avis publiés restent la propriété de leurs auteurs.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px;margin-bottom:16px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">6. Responsabilité</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">Les avis publiés sur PariSchool reflètent uniquement l'opinion de leurs auteurs. L'éditeur ne saurait être tenu responsable du contenu publié par les utilisateurs, bien qu'un système de modération soit en place pour supprimer les contenus illicites.</p>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:24px">
+        <div style="font-family:var(--serif);font-size:15px;font-weight:800;margin-bottom:10px">7. Mineurs</div>
+        <p style="color:var(--tx2);font-size:13px;line-height:1.8">PariSchool s'adresse principalement à des utilisateurs mineurs. Conformément à la loi, les utilisateurs de moins de 15 ans doivent avoir l'autorisation de leurs parents ou représentants légaux pour créer un compte. En vous inscrivant, vous déclarez avoir obtenu cette autorisation si nécessaire.</p>
+      </div>
+      <div style="text-align:center;margin-top:20px;color:var(--tx3);font-size:11px">Dernière mise à jour : mars 2026</div>
     </div></div>
     <div id="pg-admin" class="page"><div class="content">
       <div class="pg-header"><h1>🛡️ Modération</h1><p>Gère les avis en attente et signalés. Toi seul peux voir cette page.</p></div>
@@ -387,7 +430,7 @@ function renderAbout(){document.getElementById('ab-s').textContent=allSchools.le
 function setF(f,btn){filt=f;document.querySelectorAll('#pg-search .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderSearch()}
 function setRF(f,btn){rfilt=f;document.querySelectorAll('#pg-rank .ftab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderRank()}
 
-function go(p){['home','search','detail','rank','profile','about','admin'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});document.getElementById('pg-auth').style.display='none';document.getElementById('app-layout').style.display='flex';if(p==='auth'){if(currentUser){logout();return}document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';hideAuthMsg()}else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active')}document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));const ni=document.getElementById('nav-'+p);if(ni)ni.classList.add('active');const mi=document.getElementById('mob-'+p);if(mi)mi.classList.add('active');if(p==='home')renderHome();if(p==='search')renderSearch();if(p==='rank')renderRank();if(p==='profile')renderProfile();if(p==='about')renderAbout();if(p==='admin')renderAdmin()}
+function go(p){['home','search','detail','rank','profile','about','legal','admin'].forEach(x=>{const el=document.getElementById('pg-'+x);if(el)el.classList.remove('active')});document.getElementById('pg-auth').style.display='none';document.getElementById('app-layout').style.display='flex';if(p==='auth'){if(currentUser){logout();return}document.getElementById('app-layout').style.display='none';document.getElementById('pg-auth').style.display='block';hideAuthMsg()}else{const el=document.getElementById('pg-'+p);if(el)el.classList.add('active')}document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.mob-btn').forEach(b=>b.classList.remove('active'));const ni=document.getElementById('nav-'+p);if(ni)ni.classList.add('active');const mi=document.getElementById('mob-'+p);if(mi)mi.classList.add('active');if(p==='home')renderHome();if(p==='search')renderSearch();if(p==='rank')renderRank();if(p==='profile')renderProfile();if(p==='about')renderAbout();if(p==='admin')renderAdmin()}
 
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
