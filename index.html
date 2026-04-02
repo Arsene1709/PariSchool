@@ -243,7 +243,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--sans);min-height:100
         <div class="stat-card"><div class="stat-num" id="st-m">—</div><div class="stat-lbl">Note moyenne</div><div class="stat-tag">Sur 5 étoiles</div></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <div class="section-title" style="margin:0;border:none;padding:0">Établissements à la une</div>
+        <div class="section-title" style="margin:0;border:none;padding:0">Top 5 des meilleurs établissements</div>
         <button class="btn-ghost" onclick="go('search')" style="font-size:12px;padding:6px 14px">Voir tout →</button>
       </div>
       <div class="school-list" id="home-list"><div class="loading">Chargement</div></div>
@@ -423,7 +423,7 @@ async function loadSchools(){const{data,error}=await sb.from('etablissements').s
 async function loadAvis(eid){const{data,error}=await sb.from('avis').select('*').eq('etablissement_id',eid).eq('signale',false).eq('en_attente',false).order('created_at',{ascending:false});if(error){console.error(error);return[]}return data||[]}
 
 // HOME
-async function renderHome(){if(!allSchools.length)allSchools=await loadSchools();const top=allSchools.slice(0,10);document.getElementById('home-list').innerHTML=top.length?top.map(s=>schoolRow(s)).join(''):'<div class="empty"><span>🏫</span>Aucun établissement trouvé</div>';document.getElementById('st-s').textContent=allSchools.length;const totalAvis=allSchools.reduce((a,s)=>a+(s.nombre_avis||0),0);document.getElementById('st-a').textContent=totalAvis;const notees=allSchools.filter(s=>s.note_moyenne>0);document.getElementById('st-m').textContent=notees.length?(notees.reduce((a,s)=>a+parseFloat(s.note_moyenne),0)/notees.length).toFixed(1):'—'}
+async function renderHome(){if(!allSchools.length)allSchools=await loadSchools();const top=allSchools.slice(0,5);document.getElementById('home-list').innerHTML=top.length?top.map(s=>schoolRow(s)).join(''):'<div class="empty"><span>🏫</span>Aucun établissement trouvé</div>';document.getElementById('st-s').textContent=allSchools.length;const totalAvis=allSchools.reduce((a,s)=>a+(s.nombre_avis||0),0);document.getElementById('st-a').textContent=totalAvis;const notees=allSchools.filter(s=>s.note_moyenne>0);document.getElementById('st-m').textContent=notees.length?(notees.reduce((a,s)=>a+parseFloat(s.note_moyenne),0)/notees.length).toFixed(1):'—'}
 
 // SEARCH
 function fuzzyMatch(text,query){text=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');query=query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(text.includes(query))return true;const words=query.split(/\s+/);if(words.length>1)return words.every(w=>fuzzyMatch(text,w));if(query.length<3)return false;let score=0;const len=Math.min(text.length,query.length);for(let i=0;i<query.length;i++){if(i<text.length){if(text[i]===query[i])score++;else{const nearby=text.substring(Math.max(0,i-1),i+2);if(nearby.includes(query[i]))score+=0.5}}}return(score/query.length)>=0.7}
